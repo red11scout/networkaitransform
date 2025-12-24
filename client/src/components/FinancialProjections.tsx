@@ -92,8 +92,8 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
           <ResponsiveContainer width="100%" height={350}>
             <BarChart data={yearlyData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              <XAxis dataKey="year" className="text-xs" />
-              <YAxis className="text-xs" tickFormatter={(value) => `$${value}M`} />
+              <XAxis dataKey="year" tick={{ fontSize: 13, fontWeight: 500 }} stroke="hsl(var(--muted-foreground))" />
+              <YAxis tick={{ fontSize: 13, fontWeight: 500 }} tickFormatter={(value) => `$${value}M`} stroke="hsl(var(--muted-foreground))" />
               <Tooltip 
                 formatter={(value: number) => `$${value.toFixed(2)}M`}
                 contentStyle={{ 
@@ -103,8 +103,8 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
                 }}
               />
               <Legend />
-              <Bar dataKey="benefits" fill="hsl(var(--chart-4))" name="Benefits" radius={[8, 8, 0, 0]} />
-              <Bar dataKey="investment" fill="hsl(var(--chart-5))" name="Investment" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="benefits" fill="#10b981" name="Benefits" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="investment" fill="#ef4444" name="Investment" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -120,8 +120,8 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
           <ResponsiveContainer width="100%" height={350}>
             <ComposedChart data={yearlyData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              <XAxis dataKey="year" className="text-xs" />
-              <YAxis className="text-xs" tickFormatter={(value) => `$${value}M`} />
+              <XAxis dataKey="year" tick={{ fontSize: 13, fontWeight: 500 }} stroke="hsl(var(--muted-foreground))" />
+              <YAxis tick={{ fontSize: 13, fontWeight: 500 }} tickFormatter={(value) => `$${value}M`} stroke="hsl(var(--muted-foreground))" />
               <Tooltip 
                 formatter={(value: number) => `$${value.toFixed(2)}M`}
                 contentStyle={{ 
@@ -134,14 +134,14 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
               <Area 
                 type="monotone" 
                 dataKey="cumulativeCashFlow" 
-                fill="hsl(var(--primary) / 0.2)" 
-                stroke="hsl(var(--primary))"
+                fill="rgba(59, 130, 246, 0.2)" 
+                stroke="#3b82f6"
                 name="Cumulative Cash Flow"
               />
               <Line 
                 type="monotone" 
                 dataKey="netCashFlow" 
-                stroke="hsl(var(--chart-4))" 
+                stroke="#10b981" 
                 strokeWidth={3}
                 name="Annual Net Cash Flow"
                 dot={{ r: 5 }}

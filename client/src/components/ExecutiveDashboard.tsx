@@ -27,12 +27,12 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
     netCashFlow: proj.netCashFlow / 1000000
   }));
 
-  // Business drivers breakdown
+  // Business drivers breakdown with vibrant colors
   const driversData = [
-    { name: 'Cost Reduction', value: results.grandTotals.totalCostReduction, color: 'hsl(var(--chart-1))' },
-    { name: 'Risk Value', value: results.grandTotals.totalRiskValue, color: 'hsl(var(--chart-2))' },
-    { name: 'Revenue Impact', value: results.grandTotals.totalRevenue, color: 'hsl(var(--chart-4))' },
-    { name: 'Cash Flow', value: results.grandTotals.totalCashFlow, color: 'hsl(var(--chart-5))' }
+    { name: 'Cost Reduction', value: results.grandTotals.totalCostReduction, color: '#06b6d4' }, // Cyan
+    { name: 'Risk Value', value: results.grandTotals.totalRiskValue, color: '#f59e0b' }, // Amber
+    { name: 'Revenue Impact', value: results.grandTotals.totalRevenue, color: '#10b981' }, // Emerald
+    { name: 'Cash Flow', value: results.grandTotals.totalCashFlow, color: '#8b5cf6' } // Purple
   ].filter(d => d.value > 0);
 
   return (
@@ -101,8 +101,16 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={horizonData}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-                <XAxis dataKey="name" className="text-xs" />
-                <YAxis className="text-xs" tickFormatter={(value) => `$${(value / 1000000).toFixed(0)}M`} />
+                <XAxis 
+                  dataKey="name" 
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="hsl(var(--muted-foreground))"
+                />
+                <YAxis 
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  tickFormatter={(value) => `$${(value / 1000000).toFixed(0)}M`}
+                  stroke="hsl(var(--muted-foreground))"
+                />
                 <Tooltip 
                   formatter={(value: number) => formatMillions(value)}
                   contentStyle={{ 
@@ -111,7 +119,11 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                     borderRadius: '8px'
                   }}
                 />
-                <Bar dataKey="value" fill="hsl(var(--primary))" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                  {horizonData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={getHorizonColor(entry.name)} />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -131,7 +143,10 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={(props) => {
+                    const { name, percent } = props;
+                    return `${name} ${(percent * 100).toFixed(0)}%`;
+                  }}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="value"
@@ -164,8 +179,16 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
           <ResponsiveContainer width="100%" height={350}>
             <LineChart data={projectionData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
-              <XAxis dataKey="year" className="text-xs" />
-              <YAxis className="text-xs" tickFormatter={(value) => `$${value.toFixed(0)}M`} />
+              <XAxis 
+                dataKey="year" 
+                tick={{ fontSize: 13, fontWeight: 500 }}
+                stroke="hsl(var(--muted-foreground))"
+              />
+              <YAxis 
+                tick={{ fontSize: 13, fontWeight: 500 }}
+                tickFormatter={(value) => `$${value.toFixed(0)}M`}
+                stroke="hsl(var(--muted-foreground))"
+              />
               <Tooltip 
                 formatter={(value: number) => `$${value.toFixed(2)}M`}
                 contentStyle={{ 
@@ -178,23 +201,23 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
               <Line 
                 type="monotone" 
                 dataKey="benefits" 
-                stroke="hsl(var(--chart-4))" 
+                stroke="#10b981" 
                 strokeWidth={3}
                 name="Benefits"
-                dot={{ r: 5 }}
+                dot={{ r: 5, fill: '#10b981' }}
               />
               <Line 
                 type="monotone" 
                 dataKey="investment" 
-                stroke="hsl(var(--chart-5))" 
+                stroke="#ef4444" 
                 strokeWidth={3}
                 name="Investment"
-                dot={{ r: 5 }}
+                dot={{ r: 5, fill: '#ef4444' }}
               />
               <Line 
                 type="monotone" 
                 dataKey="netCashFlow" 
-                stroke="hsl(var(--primary))" 
+                stroke="#3b82f6" 
                 strokeWidth={3}
                 name="Net Cash Flow"
                 dot={{ r: 5 }}

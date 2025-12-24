@@ -318,8 +318,8 @@ export default function ScenarioPlanning() {
                   }}
                 />
                 <Legend />
-                <Bar dataKey="baseline" fill="hsl(var(--muted-foreground))" name="Baseline" radius={[8, 8, 0, 0]} />
-                <Bar dataKey="scenario" fill="hsl(var(--primary))" name="Scenario" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="baseline" fill="#9ca3af" name="Baseline" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="scenario" fill="#3b82f6" name="Scenario" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -348,7 +348,7 @@ export default function ScenarioPlanning() {
                 <Line
                   type="monotone"
                   dataKey="baselineNCF"
-                  stroke="hsl(var(--muted-foreground))"
+                  stroke="#9ca3af"
                   strokeWidth={2}
                   name="Baseline"
                   dot={{ r: 4 }}
@@ -356,7 +356,7 @@ export default function ScenarioPlanning() {
                 <Line
                   type="monotone"
                   dataKey="scenarioNCF"
-                  stroke="hsl(var(--primary))"
+                  stroke="#3b82f6"
                   strokeWidth={3}
                   name="Scenario"
                   dot={{ r: 5 }}

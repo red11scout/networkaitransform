@@ -30,18 +30,12 @@ export function formatNumber(value: number, decimals: number = 0): string {
 }
 
 export function getHorizonColor(horizon: string): string {
-  switch (horizon) {
-    case 'H1':
-      return 'hsl(var(--chart-1))';
-    case 'H2':
-      return 'hsl(var(--chart-2))';
-    case 'H3':
-      return 'hsl(var(--chart-3))';
-    case 'Enabler':
-      return 'hsl(var(--chart-4))';
-    default:
-      return 'hsl(var(--chart-5))';
-  }
+  // Vibrant colors for better chart readability
+  if (horizon.includes('Horizon 1') || horizon === 'H1') return '#10b981'; // Emerald
+  if (horizon.includes('Horizon 2') || horizon === 'H2') return '#3b82f6'; // Blue
+  if (horizon.includes('Horizon 3') || horizon === 'H3') return '#8b5cf6'; // Purple
+  if (horizon.includes('Foundational') || horizon === 'Enabler') return '#f59e0b'; // Amber
+  return '#6366f1'; // Indigo default
 }
 
 export function getHorizonLabel(horizon: string): string {

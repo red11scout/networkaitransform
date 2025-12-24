@@ -277,8 +277,8 @@ export default function SensitivityAnalysis() {
                   borderRadius: '8px'
                 }}
               />
-              <Bar dataKey="impactLow" stackId="a" fill="hsl(var(--chart-5))" name="Downside" />
-              <Bar dataKey="impactHigh" stackId="a" fill="hsl(var(--chart-4))" name="Upside" />
+              <Bar dataKey="impactLow" stackId="a" fill="#ef4444" name="Downside" />
+              <Bar dataKey="impactHigh" stackId="a" fill="#10b981" name="Upside" />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
