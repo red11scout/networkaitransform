@@ -20,10 +20,10 @@ export default function PriorityMatrix() {
     useCases.forEach(uc => {
       // Normalize to 0-100 range for positioning
       // X-axis: Effort (inverted - lower effort is better, so on the right)
-      // Y-axis: Value (higher value is better, so at the top)
+      // Y-axis: Value (higher value is better, so at the top - INVERTED for screen coordinates)
       initial[uc.id] = {
-        x: ((maxEffort - uc.effort) / maxEffort) * 85 + 5, // 5-90% range
-        y: (uc.annualValue / maxValue) * 85 + 5 // 5-90% range
+        x: ((maxEffort - uc.effort) / maxEffort) * 85 + 5, // 5-90% range, right = low effort
+        y: 95 - ((uc.annualValue / maxValue) * 85) // 5-90% range, top = high value (inverted)
       };
     });
     return initial;
