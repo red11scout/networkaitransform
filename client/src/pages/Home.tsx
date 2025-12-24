@@ -18,6 +18,7 @@ import SensitivityAnalysis from '@/components/SensitivityAnalysis';
 import ComparisonView from '@/components/ComparisonView';
 import BrandingSettings from '@/components/BrandingSettings';
 import FilterPanel from '@/components/FilterPanel';
+import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
 import { 
   BarChart3, 
   Grid3x3, 
@@ -32,7 +33,8 @@ import {
   Filter,
   Moon,
   Sun,
-  Zap
+  Zap,
+  Lightbulb
 } from 'lucide-react';
 
 export default function Home() {
@@ -143,10 +145,14 @@ export default function Home() {
           {/* Main Content */}
           <main className="container mx-auto px-4 py-6">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-              <TabsList className="grid grid-cols-5 lg:grid-cols-10 gap-2 h-auto p-2 bg-muted/50">
+              <TabsList className="grid grid-cols-5 lg:grid-cols-11 gap-2 h-auto p-2 bg-muted/50">
                 <TabsTrigger value="executive" className="flex items-center gap-2">
                   <BarChart3 className="h-4 w-4" />
                   <span className="hidden sm:inline">Executive</span>
+                </TabsTrigger>
+                <TabsTrigger value="problems" className="flex items-center gap-2">
+                  <Lightbulb className="h-4 w-4" />
+                  <span className="hidden sm:inline">Problems</span>
                 </TabsTrigger>
                 <TabsTrigger value="usecases" className="flex items-center gap-2">
                   <Grid3x3 className="h-4 w-4" />
@@ -188,6 +194,10 @@ export default function Home() {
 
               <TabsContent value="executive" className="space-y-6">
                 {results && <ExecutiveDashboard results={results} />}
+              </TabsContent>
+
+              <TabsContent value="problems" className="space-y-6">
+                <ProblemSolutionOverview />
               </TabsContent>
 
               <TabsContent value="usecases" className="space-y-6">
