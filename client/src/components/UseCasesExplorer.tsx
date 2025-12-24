@@ -1,32 +1,26 @@
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { CalculationResults } from '@/hooks/useHyperFormula';
-import { useCases } from '@/lib/useCasesData';
+import { useFilteredUseCases } from '@/hooks/useFilteredUseCases';
+import { useComparison } from '@/contexts/ComparisonContext';
 import { formatMillions, formatPercent, getHorizonColor } from '@/lib/utils';
-import { Search, TrendingUp, TrendingDown, Clock, Zap, Target } from 'lucide-react';
+import { Search, TrendingUp, TrendingDown, Clock, Zap, Target, Plus, Check } from 'lucide-react';
 
 interface UseCasesExplorerProps {
   results: CalculationResults;
 }
 
 export default function UseCasesExplorer({ results }: UseCasesExplorerProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [horizonFilter, setHorizonFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('rank');
-
-  // Filter and sort use cases
-  let filteredCases = useCases.filter(uc => {
-    const matchesSearch = uc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          uc.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesHorizon = horizonFilter === 'all' || uc.horizon === horizonFilter;
-    return matchesSearch && matchesHorizon;
-  });
+  const { filteredUseCases, totalCount, filteredCount, isFiltered } = useFilteredUseCases();
+  const { addUseCase, removeUseCase, isSelected, canAddMore } = useComparison();
 
   // Sort use cases
-  filteredCases = [...filteredCases].sort((a, b) => {
+  const sortedCases = [...filteredUseCases].sort((a, b) => {
     switch (sortBy) {
       case 'rank':
         return a.rank - b.rank;
@@ -41,41 +35,32 @@ export default function UseCasesExplorer({ results }: UseCasesExplorerProps) {
     }
   });
 
+  const handleToggleComparison = (useCase: any) => {
+    if (isSelected(useCase.id)) {
+      removeUseCase(useCase.id);
+    } else if (canAddMore) {
+      addUseCase(useCase);
+    }
+  };
+
   return (
     <div className="space-y-6">
-      {/* Filters */}
+      {/* Sort and Results Summary */}
       <Card>
         <CardHeader>
-          <CardTitle>Explore Use Cases</CardTitle>
-          <CardDescription>Filter and search through all 14 AI transformation initiatives</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search use cases..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Use Cases Explorer</CardTitle>
+              <CardDescription>
+                {isFiltered ? (
+                  <span>Showing {filteredCount} of {totalCount} use cases</span>
+                ) : (
+                  <span>Showing all {totalCount} use cases</span>
+                )}
+              </CardDescription>
             </div>
-
-            <Select value={horizonFilter} onValueChange={setHorizonFilter}>
-              <SelectTrigger>
-                <SelectValue placeholder="Filter by horizon" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Horizons</SelectItem>
-                <SelectItem value="H1">Horizon 1</SelectItem>
-                <SelectItem value="H2">Horizon 2</SelectItem>
-                <SelectItem value="H3">Horizon 3</SelectItem>
-                <SelectItem value="Enabler">Enablers</SelectItem>
-              </SelectContent>
-            </Select>
-
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger>
+              <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
@@ -86,12 +71,12 @@ export default function UseCasesExplorer({ results }: UseCasesExplorerProps) {
               </SelectContent>
             </Select>
           </div>
-        </CardContent>
+        </CardHeader>
       </Card>
 
       {/* Use Cases Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {filteredCases.map((useCase) => (
+        {sortedCases.map((useCase) => (
           <Card 
             key={useCase.id} 
             className="border-l-4 hover:shadow-lg transition-shadow"
@@ -193,22 +178,36 @@ export default function UseCasesExplorer({ results }: UseCasesExplorerProps) {
               </div>
 
               {/* Investment */}
-              <div className="pt-3 border-t flex justify-between text-xs">
-                <div>
-                  <span className="text-muted-foreground">Dev Cost: </span>
-                  <span className="font-medium">{formatMillions(useCase.developmentCost, 1)}</span>
+              <div className="pt-3 border-t flex justify-between items-center">
+                <div className="flex gap-4 text-xs">
+                  <div>
+                    <span className="text-muted-foreground">Dev Cost: </span>
+                    <span className="font-medium">{formatMillions(useCase.developmentCost, 1)}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">5Y Maint: </span>
+                    <span className="font-medium">{formatMillions(useCase.maintenanceCost5Year, 1)}</span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-muted-foreground">5Y Maint: </span>
-                  <span className="font-medium">{formatMillions(useCase.maintenanceCost5Year, 1)}</span>
-                </div>
+                <Button
+                  size="sm"
+                  variant={isSelected(useCase.id) ? "default" : "outline"}
+                  onClick={() => handleToggleComparison(useCase)}
+                  disabled={!canAddMore && !isSelected(useCase.id)}
+                >
+                  {isSelected(useCase.id) ? (
+                    <><Check className="h-3 w-3 mr-1" /> Added</>
+                  ) : (
+                    <><Plus className="h-3 w-3 mr-1" /> Compare</>
+                  )}
+                </Button>
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
 
-      {filteredCases.length === 0 && (
+      {sortedCases.length === 0 && (
         <Card>
           <CardContent className="py-12 text-center text-muted-foreground">
             No use cases found matching your filters.

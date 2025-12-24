@@ -1,23 +1,12 @@
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useTheme } from '@/contexts/ThemeContext';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { useHyperFormula } from '@/hooks/useHyperFormula';
+import { FilterProvider } from '@/contexts/FilterContext';
+import { ComparisonProvider } from '@/contexts/ComparisonContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { formatMillions, formatPercent } from '@/lib/utils';
-import { 
-  Moon, 
-  Sun, 
-  TrendingUp, 
-  DollarSign, 
-  Zap,
-  BarChart3,
-  Calendar,
-  Calculator,
-  Grid3x3,
-  Settings,
-  Activity
-} from 'lucide-react';
 import ExecutiveDashboard from '@/components/ExecutiveDashboard';
 import UseCasesExplorer from '@/components/UseCasesExplorer';
 import FinancialProjections from '@/components/FinancialProjections';
@@ -26,208 +15,242 @@ import CalculationsView from '@/components/CalculationsView';
 import PriorityMatrix from '@/components/PriorityMatrix';
 import ScenarioPlanning from '@/components/ScenarioPlanning';
 import SensitivityAnalysis from '@/components/SensitivityAnalysis';
+import ComparisonView from '@/components/ComparisonView';
+import BrandingSettings from '@/components/BrandingSettings';
+import FilterPanel from '@/components/FilterPanel';
+import { 
+  BarChart3, 
+  Grid3x3, 
+  DollarSign, 
+  Calendar, 
+  Grid2x2, 
+  Settings2, 
+  Activity, 
+  Calculator,
+  GitCompare,
+  Palette,
+  Filter,
+  Moon,
+  Sun,
+  Zap
+} from 'lucide-react';
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
-  const { results, isCalculating } = useHyperFormula();
   const [activeTab, setActiveTab] = useState('executive');
+  const { results, isCalculating } = useHyperFormula();
+  const { theme, toggleTheme } = useTheme();
 
-  if (isCalculating || !results) {
+  if (!results || isCalculating) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="text-muted-foreground">Calculating with HyperFormula...</p>
+          <div className="animate-spin h-12 w-12 border-4 border-primary border-t-transparent rounded-full mx-auto"></div>
+          <p className="text-muted-foreground">Loading dashboard data...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Zap className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight">Verizon AI Transformation</h1>
-              <p className="text-xs text-muted-foreground">Financial Impact Dashboard</p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-6 text-sm">
-              <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-primary" />
-                <span className="font-semibold">{formatMillions(results.grandTotals.totalAnnualValue)}</span>
-                <span className="text-muted-foreground">Annual Value</span>
+    <FilterProvider>
+      <ComparisonProvider>
+        <div className="min-h-screen bg-background">
+          {/* Header */}
+          <header className="border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-50">
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+                      <Zap className="h-6 w-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h1 className="text-2xl font-bold">Verizon AI Transformation</h1>
+                      <p className="text-sm text-muted-foreground">Financial Impact Dashboard</p>
+                    </div>
+                  </div>
+                  <img src="/images/verizon-logo.png" alt="Verizon" className="h-8 ml-4" />
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-2">
+                      <DollarSign className="h-4 w-4 text-primary" />
+                      <span className="font-semibold">{formatMillions(results.grandTotals.totalAnnualValue)}</span>
+                      <span className="text-muted-foreground">Annual Value</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Activity className="h-4 w-4 text-chart-4" />
+                      <span className="font-semibold">{formatPercent(results.roi)}</span>
+                      <span className="text-muted-foreground">ROI</span>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleTheme}
+                    className="rounded-full"
+                  >
+                    {theme === 'dark' ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )}
+                  </Button>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-chart-4" />
-                <span className="font-semibold">{formatPercent(results.roi)}</span>
-                <span className="text-muted-foreground">ROI</span>
+            </div>
+          </header>
+
+          {/* Key Metrics Bar */}
+          <div className="border-b bg-muted/30">
+            <div className="container mx-auto px-4 py-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 border-none">
+                  <CardContent className="p-4">
+                    <div className="text-sm text-muted-foreground">5-Year NPV</div>
+                    <div className="text-2xl font-bold mt-1">{formatMillions(results.npv)}</div>
+                    <div className="text-xs text-muted-foreground mt-1">@ 10% discount rate</div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-none">
+                  <CardContent className="p-4">
+                    <div className="text-sm text-muted-foreground">Return on Investment</div>
+                    <div className="text-2xl font-bold mt-1">{formatPercent(results.roi)}</div>
+                    <div className="text-xs text-muted-foreground mt-1">Over 5 years</div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-none">
+                  <CardContent className="p-4">
+                    <div className="text-sm text-muted-foreground">Total Use Cases</div>
+                    <div className="text-2xl font-bold mt-1">14</div>
+                    <div className="text-xs text-muted-foreground mt-1">Across 3 horizons</div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-none">
+                  <CardContent className="p-4">
+                    <div className="text-sm text-muted-foreground">Payback Period</div>
+                    <div className="text-2xl font-bold mt-1">11 mo</div>
+                    <div className="text-xs text-muted-foreground mt-1">Rapid value delivery</div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
           </div>
+
+          {/* Main Content */}
+          <main className="container mx-auto px-4 py-6">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+              <TabsList className="grid grid-cols-5 lg:grid-cols-10 gap-2 h-auto p-2 bg-muted/50">
+                <TabsTrigger value="executive" className="flex items-center gap-2">
+                  <BarChart3 className="h-4 w-4" />
+                  <span className="hidden sm:inline">Executive</span>
+                </TabsTrigger>
+                <TabsTrigger value="usecases" className="flex items-center gap-2">
+                  <Grid3x3 className="h-4 w-4" />
+                  <span className="hidden sm:inline">Use Cases</span>
+                </TabsTrigger>
+                <TabsTrigger value="financial" className="flex items-center gap-2">
+                  <DollarSign className="h-4 w-4" />
+                  <span className="hidden sm:inline">Financial</span>
+                </TabsTrigger>
+                <TabsTrigger value="roadmap" className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  <span className="hidden sm:inline">Roadmap</span>
+                </TabsTrigger>
+                <TabsTrigger value="matrix" className="flex items-center gap-2">
+                  <Grid2x2 className="h-4 w-4" />
+                  <span className="hidden sm:inline">Priority Matrix</span>
+                </TabsTrigger>
+                <TabsTrigger value="scenarios" className="flex items-center gap-2">
+                  <Settings2 className="h-4 w-4" />
+                  <span className="hidden sm:inline">Scenarios</span>
+                </TabsTrigger>
+                <TabsTrigger value="sensitivity" className="flex items-center gap-2">
+                  <Activity className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sensitivity</span>
+                </TabsTrigger>
+                <TabsTrigger value="calculations" className="flex items-center gap-2">
+                  <Calculator className="h-4 w-4" />
+                  <span className="hidden sm:inline">Calculations</span>
+                </TabsTrigger>
+                <TabsTrigger value="comparison" className="flex items-center gap-2">
+                  <GitCompare className="h-4 w-4" />
+                  <span className="hidden sm:inline">Comparison</span>
+                </TabsTrigger>
+                <TabsTrigger value="branding" className="flex items-center gap-2">
+                  <Palette className="h-4 w-4" />
+                  <span className="hidden sm:inline">Branding</span>
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="executive" className="space-y-6">
+                {results && <ExecutiveDashboard results={results} />}
+              </TabsContent>
+
+              <TabsContent value="usecases" className="space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                  <div className="lg:col-span-1">
+                    <FilterPanel />
+                  </div>
+                  <div className="lg:col-span-3">
+                    {results && <UseCasesExplorer results={results} />}
+                  </div>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="financial" className="space-y-6">
+                {results && <FinancialProjections results={results} />}
+              </TabsContent>
+
+              <TabsContent value="roadmap" className="space-y-6">
+                {results && <HorizonRoadmap results={results} />}
+              </TabsContent>
+
+              <TabsContent value="matrix" className="space-y-6">
+                <PriorityMatrix />
+              </TabsContent>
+
+              <TabsContent value="scenarios" className="space-y-6">
+                <ScenarioPlanning />
+              </TabsContent>
+
+              <TabsContent value="sensitivity" className="space-y-6">
+                <SensitivityAnalysis />
+              </TabsContent>
+
+              <TabsContent value="calculations" className="space-y-6">
+                {results && <CalculationsView results={results} />}
+              </TabsContent>
+
+              <TabsContent value="comparison" className="space-y-6">
+                <ComparisonView />
+              </TabsContent>
+
+              <TabsContent value="branding" className="space-y-6">
+                <BrandingSettings />
+              </TabsContent>
+            </Tabs>
+          </main>
+
+          {/* Footer */}
+          <footer className="border-t mt-12 py-6 bg-muted/30">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <img src="/images/verizon-logo.png" alt="Verizon" className="h-5" />
+                  <span>© 2024 Verizon. All rights reserved.</span>
+                </div>
+                <div>
+                  <span>AI Transformation Financial Impact Dashboard</span>
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
-      </header>
-
-      {/* Hero Stats */}
-      <div className="border-b bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
-        <div className="container py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 border-blue-200 dark:border-blue-800">
-              <CardContent className="pt-6">
-                <div className="text-sm text-muted-foreground mb-1">5-Year NPV</div>
-                <div className="text-3xl font-bold">{formatMillions(results.npv)}</div>
-                <div className="text-xs text-muted-foreground mt-1">@ 10% discount rate</div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800">
-              <CardContent className="pt-6">
-                <div className="text-sm text-muted-foreground mb-1">Return on Investment</div>
-                <div className="text-3xl font-bold">{formatPercent(results.roi)}</div>
-                <div className="text-xs text-muted-foreground mt-1">Over 5 years</div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800">
-              <CardContent className="pt-6">
-                <div className="text-sm text-muted-foreground mb-1">Total Use Cases</div>
-                <div className="text-3xl font-bold">14</div>
-                <div className="text-xs text-muted-foreground mt-1">Across 3 horizons</div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900 border-orange-200 dark:border-orange-800">
-              <CardContent className="pt-6">
-                <div className="text-sm text-muted-foreground mb-1">Payback Period</div>
-                <div className="text-3xl font-bold">11 mo</div>
-                <div className="text-xs text-muted-foreground mt-1">Rapid value delivery</div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="inline-flex h-auto flex-wrap gap-2 bg-transparent p-0">
-            <TabsTrigger 
-              value="executive" 
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <BarChart3 className="h-4 w-4 mr-2" />
-              Executive
-            </TabsTrigger>
-            <TabsTrigger 
-              value="use-cases"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Grid3x3 className="h-4 w-4 mr-2" />
-              Use Cases
-            </TabsTrigger>
-            <TabsTrigger 
-              value="financial"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <DollarSign className="h-4 w-4 mr-2" />
-              Financial
-            </TabsTrigger>
-            <TabsTrigger 
-              value="roadmap"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Calendar className="h-4 w-4 mr-2" />
-              Roadmap
-            </TabsTrigger>
-            <TabsTrigger 
-              value="priority"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Grid3x3 className="h-4 w-4 mr-2" />
-              Priority Matrix
-            </TabsTrigger>
-            <TabsTrigger 
-              value="scenario"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Settings className="h-4 w-4 mr-2" />
-              Scenarios
-            </TabsTrigger>
-            <TabsTrigger 
-              value="sensitivity"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Activity className="h-4 w-4 mr-2" />
-              Sensitivity
-            </TabsTrigger>
-            <TabsTrigger 
-              value="calculations"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              <Calculator className="h-4 w-4 mr-2" />
-              Calculations
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="executive" className="mt-6 animate-fade-in">
-            <ExecutiveDashboard results={results} />
-          </TabsContent>
-
-          <TabsContent value="use-cases" className="mt-6 animate-fade-in">
-            <UseCasesExplorer results={results} />
-          </TabsContent>
-
-          <TabsContent value="financial" className="mt-6 animate-fade-in">
-            <FinancialProjections results={results} />
-          </TabsContent>
-
-          <TabsContent value="roadmap" className="mt-6 animate-fade-in">
-            <HorizonRoadmap results={results} />
-          </TabsContent>
-
-          <TabsContent value="priority" className="mt-6 animate-fade-in">
-            <PriorityMatrix />
-          </TabsContent>
-
-          <TabsContent value="scenario" className="mt-6 animate-fade-in">
-            <ScenarioPlanning />
-          </TabsContent>
-
-          <TabsContent value="sensitivity" className="mt-6 animate-fade-in">
-            <SensitivityAnalysis />
-          </TabsContent>
-
-          <TabsContent value="calculations" className="mt-6 animate-fade-in">
-            <CalculationsView results={results} />
-          </TabsContent>
-        </Tabs>
-      </div>
-
-      {/* Footer */}
-      <footer className="border-t mt-12">
-        <div className="container py-6 text-center text-sm text-muted-foreground">
-          <p>Verizon AI Transformation Dashboard • Powered by HyperFormula v3.1.1</p>
-        </div>
-      </footer>
-    </div>
+      </ComparisonProvider>
+    </FilterProvider>
   );
 }
