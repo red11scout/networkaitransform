@@ -70,14 +70,14 @@ export default function ProblemSolutionOverview() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 rounded-xl p-6 border border-emerald-500/20">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-10 w-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-2 md:gap-3 mb-2">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
                   <AlertCircle className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">14</div>
+                  <div className="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400">14</div>
                   <div className="text-sm text-muted-foreground">Critical Problems</div>
                 </div>
               </div>
@@ -87,12 +87,12 @@ export default function ProblemSolutionOverview() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-500/10 to-blue-500/5 rounded-xl p-6 border border-blue-500/20">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-10 w-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-2 md:gap-3 mb-2">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
                   <Lightbulb className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">14</div>
+                  <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">14</div>
                   <div className="text-sm text-muted-foreground">AI Solutions</div>
                 </div>
               </div>
@@ -102,12 +102,12 @@ export default function ProblemSolutionOverview() {
             </div>
 
             <div className="bg-gradient-to-br from-purple-500/10 to-purple-500/5 rounded-xl p-6 border border-purple-500/20">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-10 w-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-2 md:gap-3 mb-2">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
                   <TrendingUp className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">$15.7M</div>
+                  <div className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">$15.7M</div>
                   <div className="text-sm text-muted-foreground">Annual Value</div>
                 </div>
               </div>
@@ -117,12 +117,12 @@ export default function ProblemSolutionOverview() {
             </div>
 
             <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 rounded-xl p-6 border border-amber-500/20">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-10 w-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-2 md:gap-3 mb-2">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
                   <CheckCircle2 className="h-5 w-5 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-amber-600 dark:text-amber-400">42</div>
+                  <div className="text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400">42</div>
                   <div className="text-sm text-muted-foreground">KPI Improvements</div>
                 </div>
               </div>

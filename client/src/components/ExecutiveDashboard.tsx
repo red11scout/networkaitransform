@@ -40,16 +40,16 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
       {/* Executive Summary Card */}
       <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5">
         <CardHeader>
-          <CardTitle className="text-2xl flex items-center gap-2">
-            <Award className="h-6 w-6 text-primary" />
+          <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+            <Award className="h-5 w-5 md:h-6 md:w-6 text-primary" />
             Executive Summary
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm">
             Comprehensive AI transformation delivering exceptional ROI and operational excellence
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <TrendingUp className="h-4 w-4" />
@@ -90,7 +90,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
       </Card>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {/* Horizon Value Distribution */}
         <Card>
           <CardHeader>
@@ -98,7 +98,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
             <CardDescription>Annual value distribution across implementation horizons</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="md:h-[300px]">
               <BarChart data={horizonData}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                 <XAxis 
@@ -136,7 +136,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
             <CardDescription>Financial impact by business driver category</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="md:h-[300px]">
               <PieChart>
                 <Pie
                   data={driversData}
