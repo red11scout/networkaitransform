@@ -1,27 +1,31 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useHyperFormula } from '@/hooks/useHyperFormula';
-import { formatMillions, formatPercent, formatNumber } from '@/lib/utils';
+import { formatMillions, formatPercent } from '@/lib/utils';
 import { 
   Moon, 
   Sun, 
   TrendingUp, 
   DollarSign, 
-  Target, 
   Zap,
   BarChart3,
   Calendar,
   Calculator,
-  Grid3x3
+  Grid3x3,
+  Settings,
+  Activity
 } from 'lucide-react';
 import ExecutiveDashboard from '@/components/ExecutiveDashboard';
 import UseCasesExplorer from '@/components/UseCasesExplorer';
 import FinancialProjections from '@/components/FinancialProjections';
 import HorizonRoadmap from '@/components/HorizonRoadmap';
 import CalculationsView from '@/components/CalculationsView';
+import PriorityMatrix from '@/components/PriorityMatrix';
+import ScenarioPlanning from '@/components/ScenarioPlanning';
+import SensitivityAnalysis from '@/components/SensitivityAnalysis';
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
@@ -83,113 +87,145 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="container py-8">
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">5-Year NPV</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{formatMillions(results.npv)}</div>
-              <p className="text-xs text-muted-foreground mt-1">@ 10% discount rate</p>
-            </CardContent>
-          </Card>
+      {/* Hero Stats */}
+      <div className="border-b bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
+        <div className="container py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 border-blue-200 dark:border-blue-800">
+              <CardContent className="pt-6">
+                <div className="text-sm text-muted-foreground mb-1">5-Year NPV</div>
+                <div className="text-3xl font-bold">{formatMillions(results.npv)}</div>
+                <div className="text-xs text-muted-foreground mt-1">@ 10% discount rate</div>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-gradient-to-br from-chart-4/10 to-chart-4/5 border-chart-4/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Return on Investment</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">{formatPercent(results.roi)}</div>
-              <p className="text-xs text-muted-foreground mt-1">Over 5 years</p>
-            </CardContent>
-          </Card>
+            <Card className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800">
+              <CardContent className="pt-6">
+                <div className="text-sm text-muted-foreground mb-1">Return on Investment</div>
+                <div className="text-3xl font-bold">{formatPercent(results.roi)}</div>
+                <div className="text-xs text-muted-foreground mt-1">Over 5 years</div>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-gradient-to-br from-chart-2/10 to-chart-2/5 border-chart-2/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Total Use Cases</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">14</div>
-              <p className="text-xs text-muted-foreground mt-1">Across 3 horizons</p>
-            </CardContent>
-          </Card>
+            <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-purple-200 dark:border-purple-800">
+              <CardContent className="pt-6">
+                <div className="text-sm text-muted-foreground mb-1">Total Use Cases</div>
+                <div className="text-3xl font-bold">14</div>
+                <div className="text-xs text-muted-foreground mt-1">Across 3 horizons</div>
+              </CardContent>
+            </Card>
 
-          <Card className="bg-gradient-to-br from-chart-5/10 to-chart-5/5 border-chart-5/20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium text-muted-foreground">Payback Period</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold">11 mo</div>
-              <p className="text-xs text-muted-foreground mt-1">Rapid value delivery</p>
-            </CardContent>
-          </Card>
+            <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900 border-orange-200 dark:border-orange-800">
+              <CardContent className="pt-6">
+                <div className="text-sm text-muted-foreground mb-1">Payback Period</div>
+                <div className="text-3xl font-bold">11 mo</div>
+                <div className="text-xs text-muted-foreground mt-1">Rapid value delivery</div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
+      </div>
 
-        {/* Main Tabs */}
+      {/* Main Content */}
+      <div className="container py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 h-auto gap-2 bg-muted/50 p-2">
-            <TabsTrigger value="executive" className="flex items-center gap-2">
-              <BarChart3 className="h-4 w-4" />
-              <span className="hidden sm:inline">Executive</span>
+          <TabsList className="inline-flex h-auto flex-wrap gap-2 bg-transparent p-0">
+            <TabsTrigger 
+              value="executive" 
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <BarChart3 className="h-4 w-4 mr-2" />
+              Executive
             </TabsTrigger>
-            <TabsTrigger value="usecases" className="flex items-center gap-2">
-              <Grid3x3 className="h-4 w-4" />
-              <span className="hidden sm:inline">Use Cases</span>
+            <TabsTrigger 
+              value="use-cases"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Grid3x3 className="h-4 w-4 mr-2" />
+              Use Cases
             </TabsTrigger>
-            <TabsTrigger value="financial" className="flex items-center gap-2">
-              <DollarSign className="h-4 w-4" />
-              <span className="hidden sm:inline">Financial</span>
+            <TabsTrigger 
+              value="financial"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <DollarSign className="h-4 w-4 mr-2" />
+              Financial
             </TabsTrigger>
-            <TabsTrigger value="roadmap" className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              <span className="hidden sm:inline">Roadmap</span>
+            <TabsTrigger 
+              value="roadmap"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Calendar className="h-4 w-4 mr-2" />
+              Roadmap
             </TabsTrigger>
-            <TabsTrigger value="calculations" className="flex items-center gap-2">
-              <Calculator className="h-4 w-4" />
-              <span className="hidden sm:inline">Calculations</span>
+            <TabsTrigger 
+              value="priority"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Grid3x3 className="h-4 w-4 mr-2" />
+              Priority Matrix
+            </TabsTrigger>
+            <TabsTrigger 
+              value="scenario"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Settings className="h-4 w-4 mr-2" />
+              Scenarios
+            </TabsTrigger>
+            <TabsTrigger 
+              value="sensitivity"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Activity className="h-4 w-4 mr-2" />
+              Sensitivity
+            </TabsTrigger>
+            <TabsTrigger 
+              value="calculations"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              <Calculator className="h-4 w-4 mr-2" />
+              Calculations
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="executive" className="space-y-6">
+          <TabsContent value="executive" className="mt-6 animate-fade-in">
             <ExecutiveDashboard results={results} />
           </TabsContent>
 
-          <TabsContent value="usecases" className="space-y-6">
+          <TabsContent value="use-cases" className="mt-6 animate-fade-in">
             <UseCasesExplorer results={results} />
           </TabsContent>
 
-          <TabsContent value="financial" className="space-y-6">
+          <TabsContent value="financial" className="mt-6 animate-fade-in">
             <FinancialProjections results={results} />
           </TabsContent>
 
-          <TabsContent value="roadmap" className="space-y-6">
+          <TabsContent value="roadmap" className="mt-6 animate-fade-in">
             <HorizonRoadmap results={results} />
           </TabsContent>
 
-          <TabsContent value="calculations" className="space-y-6">
+          <TabsContent value="priority" className="mt-6 animate-fade-in">
+            <PriorityMatrix />
+          </TabsContent>
+
+          <TabsContent value="scenario" className="mt-6 animate-fade-in">
+            <ScenarioPlanning />
+          </TabsContent>
+
+          <TabsContent value="sensitivity" className="mt-6 animate-fade-in">
+            <SensitivityAnalysis />
+          </TabsContent>
+
+          <TabsContent value="calculations" className="mt-6 animate-fade-in">
             <CalculationsView results={results} />
           </TabsContent>
         </Tabs>
-      </main>
+      </div>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/30 mt-16">
-        <div className="container py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <div>
-              <p>Powered by <span className="font-semibold text-foreground">HyperFormula</span> calculation engine</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <span>14 AI Use Cases</span>
-              <span>•</span>
-              <span>$60.45M 5-Year Benefits</span>
-              <span>•</span>
-              <span>448.3% ROI</span>
-            </div>
-          </div>
+      <footer className="border-t mt-12">
+        <div className="container py-6 text-center text-sm text-muted-foreground">
+          <p>Verizon AI Transformation Dashboard • Powered by HyperFormula v3.1.1</p>
         </div>
       </footer>
     </div>
