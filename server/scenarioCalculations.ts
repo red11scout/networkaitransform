@@ -54,22 +54,23 @@ export interface UseCaseResult {
   roi: number;
 }
 
-// Base use case data (from the original analysis)
+// Base use case data - aligned with frontend costBreakdownData.ts
+// Total annual benefits: $15.7M, Infrastructure investment: $2.11M, Annual operating costs: $3M
 const BASE_USE_CASES = [
-  { id: 'UC01', name: 'Autonomous Network Testing', annualBenefit: 3000000, implementationCost: 500000, annualOperatingCost: 150000, timeToValue: 6, successProbability: 85 },
-  { id: 'UC02', name: 'Intelligent Incident Management', annualBenefit: 2500000, implementationCost: 450000, annualOperatingCost: 120000, timeToValue: 4, successProbability: 90 },
-  { id: 'UC03', name: 'Predictive Network Maintenance', annualBenefit: 2000000, implementationCost: 600000, annualOperatingCost: 180000, timeToValue: 8, successProbability: 75 },
-  { id: 'UC04', name: 'AI-Powered Customer Support', annualBenefit: 1800000, implementationCost: 400000, annualOperatingCost: 100000, timeToValue: 5, successProbability: 85 },
-  { id: 'UC05', name: 'Network Capacity Optimization', annualBenefit: 1500000, implementationCost: 550000, annualOperatingCost: 140000, timeToValue: 7, successProbability: 80 },
-  { id: 'UC06', name: 'Intelligent Document Processing', annualBenefit: 1200000, implementationCost: 350000, annualOperatingCost: 90000, timeToValue: 4, successProbability: 90 },
-  { id: 'UC07', name: 'AI Code Review & Generation', annualBenefit: 1000000, implementationCost: 300000, annualOperatingCost: 80000, timeToValue: 3, successProbability: 85 },
-  { id: 'UC08', name: 'Automated Compliance Monitoring', annualBenefit: 900000, implementationCost: 400000, annualOperatingCost: 110000, timeToValue: 6, successProbability: 80 },
-  { id: 'UC09', name: 'Intelligent Resource Allocation', annualBenefit: 850000, implementationCost: 320000, annualOperatingCost: 85000, timeToValue: 5, successProbability: 85 },
-  { id: 'UC10', name: 'AI-Driven Sales Intelligence', annualBenefit: 750000, implementationCost: 280000, annualOperatingCost: 75000, timeToValue: 4, successProbability: 80 },
-  { id: 'UC11', name: 'Predictive Customer Churn', annualBenefit: 700000, implementationCost: 350000, annualOperatingCost: 95000, timeToValue: 6, successProbability: 75 },
-  { id: 'UC12', name: 'Automated Report Generation', annualBenefit: 600000, implementationCost: 250000, annualOperatingCost: 60000, timeToValue: 3, successProbability: 90 },
-  { id: 'UC13', name: 'AI Governance Framework', annualBenefit: 400000, implementationCost: 500000, annualOperatingCost: 150000, timeToValue: 12, successProbability: 70 },
-  { id: 'UC14', name: 'AI Training & Enablement', annualBenefit: 350000, implementationCost: 400000, annualOperatingCost: 120000, timeToValue: 9, successProbability: 75 },
+  { id: 'UC01', name: 'Autonomous Network Testing', annualBenefit: 3000000, implementationCost: 0, annualOperatingCost: 220000, timeToValue: 2, successProbability: 100 },
+  { id: 'UC02', name: 'Real-Time Anomaly Detection', annualBenefit: 1000000, implementationCost: 0, annualOperatingCost: 220000, timeToValue: 2, successProbability: 100 },
+  { id: 'UC03', name: 'Post-Maintenance Documentation', annualBenefit: 500000, implementationCost: 0, annualOperatingCost: 220000, timeToValue: 1.5, successProbability: 100 },
+  { id: 'UC04', name: 'Maintenance Window Planning', annualBenefit: 800000, implementationCost: 0, annualOperatingCost: 220000, timeToValue: 2, successProbability: 100 },
+  { id: 'UC05', name: 'GPU Infrastructure Foundation', annualBenefit: 0, implementationCost: 2110000, annualOperatingCost: 0, timeToValue: 0, successProbability: 100 },
+  { id: 'UC06', name: 'Tribal Knowledge RAG System', annualBenefit: 2500000, implementationCost: 0, annualOperatingCost: 225000, timeToValue: 9, successProbability: 100 },
+  { id: 'UC07', name: 'Intelligent Incident Triage', annualBenefit: 1500000, implementationCost: 0, annualOperatingCost: 225000, timeToValue: 8, successProbability: 100 },
+  { id: 'UC08', name: 'Secure Data Federation Layer', annualBenefit: 1400000, implementationCost: 0, annualOperatingCost: 225000, timeToValue: 8, successProbability: 100 },
+  { id: 'UC09', name: 'AI Model Governance Pipeline', annualBenefit: 500000, implementationCost: 0, annualOperatingCost: 225000, timeToValue: 12, successProbability: 100 },
+  { id: 'UC10', name: 'Cross-Network Testing', annualBenefit: 800000, implementationCost: 0, annualOperatingCost: 225000, timeToValue: 12, successProbability: 100 },
+  { id: 'UC11', name: 'Configuration Drift Detection', annualBenefit: 500000, implementationCost: 0, annualOperatingCost: 230000, timeToValue: 4, successProbability: 100 },
+  { id: 'UC12', name: 'Maintenance Scheduling', annualBenefit: 300000, implementationCost: 0, annualOperatingCost: 230000, timeToValue: 2, successProbability: 100 },
+  { id: 'UC13', name: 'Intelligent Workforce Scheduling', annualBenefit: 1500000, implementationCost: 0, annualOperatingCost: 230000, timeToValue: 9, successProbability: 100 },
+  { id: 'UC14', name: 'AI-Powered Training', annualBenefit: 1400000, implementationCost: 0, annualOperatingCost: 305000, timeToValue: 15, successProbability: 100 },
 ];
 
 /**
@@ -91,17 +92,15 @@ export function calculateScenario(params: ScenarioParams): CalculationResults {
 
   // Calculate use case results
   const useCaseResults: UseCaseResult[] = useCases.map(uc => {
-    // Adjust benefit for success probability and implementation speed
-    const adjustedAnnualBenefit = uc.annualBenefit * (uc.successProbability / 100) * (params.implementationSpeed / 100);
+    // Adjust benefit for implementation speed only (success probability already factored into base data)
+    const adjustedAnnualBenefit = uc.annualBenefit * (params.implementationSpeed / 100);
     
-    // Calculate year-by-year benefits
-    const year1Benefit = uc.timeToValue <= 12 
-      ? adjustedAnnualBenefit * ((12 - uc.timeToValue) / 12)
-      : 0;
+    // Calculate year-by-year benefits (no ramp-up, full benefits from Year 1 to match frontend)
+    const year1Benefit = adjustedAnnualBenefit;
     const year2Benefit = adjustedAnnualBenefit;
-    const year3Benefit = adjustedAnnualBenefit * (1 + params.growthFactor);
-    const year4Benefit = adjustedAnnualBenefit * Math.pow(1 + params.growthFactor, 2);
-    const year5Benefit = adjustedAnnualBenefit * Math.pow(1 + params.growthFactor, 3);
+    const year3Benefit = adjustedAnnualBenefit;
+    const year4Benefit = adjustedAnnualBenefit;
+    const year5Benefit = adjustedAnnualBenefit;
     
     const fiveYearValue = year1Benefit + year2Benefit + year3Benefit + year4Benefit + year5Benefit;
     const fiveYearCosts = uc.implementationCost + (uc.annualOperatingCost * 5);
@@ -136,14 +135,10 @@ export function calculateScenario(params: ScenarioParams): CalculationResults {
   const totalAnnualOperatingCost = useCaseResults.reduce((sum, uc) => sum + uc.annualOperatingCost, 0);
   const fiveYearNPV = useCaseResults.reduce((sum, uc) => sum + uc.npv, 0);
   
-  // Calculate 3-year NPV
-  const year1Total = useCaseResults.reduce((sum, uc) => {
-    const baseUC = BASE_USE_CASES.find(b => b.id === uc.useCaseId)!;
-    const timeToValue = baseUC.timeToValue;
-    return sum + (timeToValue <= 12 ? uc.annualValue * ((12 - timeToValue) / 12) : 0);
-  }, 0);
+  // Calculate 3-year NPV (no ramp-up, consistent with year1Total = totalAnnualValue)
+  const year1Total = totalAnnualValue;
   const year2Total = totalAnnualValue;
-  const year3Total = totalAnnualValue * (1 + params.growthFactor);
+  const year3Total = totalAnnualValue;
   
   const threeYearNPV = 
     (year1Total / Math.pow(1 + params.discountRate, 1)) +
@@ -167,9 +162,7 @@ export function calculateScenario(params: ScenarioParams): CalculationResults {
   const yearlyBreakdown: YearlyBreakdown[] = [];
   let cumulative = -totalImplementationCost;
   
-  const yearlyBenefits = [year1Total, year2Total, year3Total, 
-    totalAnnualValue * Math.pow(1 + params.growthFactor, 2),
-    totalAnnualValue * Math.pow(1 + params.growthFactor, 3)];
+  const yearlyBenefits = [year1Total, year2Total, year3Total, totalAnnualValue, totalAnnualValue];
   
   for (let year = 1; year <= 5; year++) {
     const benefits = yearlyBenefits[year - 1];
@@ -188,7 +181,7 @@ export function calculateScenario(params: ScenarioParams): CalculationResults {
     });
   }
   
-  // Calculate ROI
+  // Calculate ROI - using correct formula: (total benefits - total costs) / total costs * 100
   const fiveYearBenefits = yearlyBenefits.reduce((sum, b) => sum + b, 0);
   const fiveYearCosts = totalImplementationCost + (totalAnnualOperatingCost * 5);
   const roi = fiveYearCosts > 0 ? ((fiveYearBenefits - fiveYearCosts) / fiveYearCosts) * 100 : 0;

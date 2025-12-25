@@ -127,3 +127,13 @@
 - [x] Update Problem Solution section KPI count from 42 to 14
 - [x] Update KPI dialog title from 42 to 14
 - [x] Update KPI dialog description to reflect accurate count
+
+
+## Scenario Builder Financial Metrics Fix
+- [x] Investigate ScenarioBuilder calculation logic (found: backend uses different base data and formulas)
+- [x] Fix Annual Value to show $15.7M (updated BASE_USE_CASES to match frontend)
+- [x] Fix NPV calculation (updated base data, now shows $42.4M with proper discounting)
+- [x] Fix ROI to show correct percentage (fixed formula and display, now shows 359%)
+- [x] Fix Payback Period (updated with correct investment and cash flows, now shows 2 months)
+- [x] Ensure ScenarioBuilder uses unified calculation sources (aligned backend with frontend data)
+- [x] Remove ROI division by 100 in ScenarioBuilder display

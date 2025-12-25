@@ -447,7 +447,7 @@ export default function ScenarioBuilder({ onSave }: ScenarioBuilderProps) {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-purple-700 dark:text-purple-300 font-medium">ROI</p>
-                        <p className="text-2xl font-bold mt-1">{formatPercent(calculationResults.roi / 100)}</p>
+                        <p className="text-2xl font-bold mt-1">{formatPercent(calculationResults.roi)}</p>
                         {baselineResults && (
                           <p className="text-sm mt-1">
                             <Badge variant={getDelta(calculationResults.roi, baselineResults.roi).delta >= 0 ? 'default' : 'destructive'}>
