@@ -3,6 +3,7 @@ import { CalculationResults } from '@/hooks/useHyperFormula';
 import { formatMillions, formatPercent, formatNumber } from '@/lib/utils';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Line, Area } from 'recharts';
 import { DollarSign, TrendingUp, Calendar, Award } from 'lucide-react';
+import { PaybackTooltip } from '@/components/PaybackTooltip';
 
 interface FinancialProjectionsProps {
   results: CalculationResults;
@@ -73,6 +74,7 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
               <Calendar className="h-4 w-4" />
               Payback Period
+              <PaybackTooltip paybackMonths={results.paybackPeriod} />
             </CardTitle>
           </CardHeader>
           <CardContent>

@@ -14,6 +14,7 @@ import {
   tokenConsumption,
   totalMonthlyTokens
 } from '@/lib/costBreakdownData';
+import { PaybackTooltip } from '@/components/PaybackTooltip';
 import { formatMillions, formatCurrency, formatPercent, formatNumber } from '@/lib/utils';
 import {
   BarChart,
@@ -552,7 +553,10 @@ export default function CostAnalysis() {
                       </span>
                     </div>
                     <div className="flex justify-between items-center mt-2">
-                      <span className="text-sm text-muted-foreground">Payback Period</span>
+                      <span className="text-sm text-muted-foreground flex items-center gap-1">
+                        Payback Period
+                        <PaybackTooltip paybackMonths={roi3Year.paybackPeriod} />
+                      </span>
                       <span className="text-lg font-bold">{roi3Year.paybackPeriod} months</span>
                     </div>
                   </div>
@@ -603,7 +607,10 @@ export default function CostAnalysis() {
                       </span>
                     </div>
                     <div className="flex justify-between items-center mt-2">
-                      <span className="text-sm text-muted-foreground">Payback Period</span>
+                      <span className="text-sm text-muted-foreground flex items-center gap-1">
+                        Payback Period
+                        <PaybackTooltip paybackMonths={roi5Year.paybackPeriod} />
+                      </span>
                       <span className="text-lg font-bold">{roi5Year.paybackPeriod} months</span>
                     </div>
                   </div>

@@ -4,6 +4,7 @@ import { formatMillions, formatPercent, getHorizonColor, getHorizonLabel } from 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import { horizonSummaries } from '@/lib/useCasesData';
 import { TrendingUp, Target, Clock, Award } from 'lucide-react';
+import { PaybackTooltip } from '@/components/PaybackTooltip';
 
 interface ExecutiveDashboardProps {
   results: CalculationResults;
@@ -81,6 +82,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Clock className="h-4 w-4" />
                 <span>Payback Period</span>
+                <PaybackTooltip paybackMonths={results.paybackPeriod} />
               </div>
               <div className="text-3xl font-bold">{results.paybackPeriod} mo</div>
               <p className="text-xs text-muted-foreground">Rapid value delivery</p>
