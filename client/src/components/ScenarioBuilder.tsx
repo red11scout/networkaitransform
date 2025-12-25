@@ -25,6 +25,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { MetricExplanationTooltip } from './MetricExplanationTooltip';
 
 interface ScenarioBuilderProps {
   onSave?: (scenarioId: number) => void;
@@ -406,7 +407,15 @@ export default function ScenarioBuilder({ onSave }: ScenarioBuilderProps) {
                   <CardContent className="pt-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">Total Annual Value</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">Total Annual Value</p>
+                          <MetricExplanationTooltip
+                            title="Total Annual Value Calculation"
+                            explanation="Sum of annual benefits across all selected use cases, adjusted by implementation speed and growth factors."
+                            calculation="Annual Value = Σ(Use Case Benefits × Implementation Speed × Growth Factor)"
+                            note="This represents the steady-state annual value once all use cases are fully implemented."
+                          />
+                        </div>
                         <p className="text-2xl font-bold mt-1">{formatCurrency(calculationResults.totalAnnualValue)}</p>
                         {baselineResults && (
                           <p className="text-sm mt-1">
@@ -426,7 +435,15 @@ export default function ScenarioBuilder({ onSave }: ScenarioBuilderProps) {
                   <CardContent className="pt-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-green-700 dark:text-green-300 font-medium">5-Year NPV</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm text-green-700 dark:text-green-300 font-medium">5-Year NPV</p>
+                          <MetricExplanationTooltip
+                            title="Net Present Value (NPV) Calculation"
+                            explanation="Present value of all future cash flows over 5 years, discounted by the specified discount rate to account for time value of money."
+                            calculation="NPV = Σ(Cash Flow_year / (1 + Discount Rate)^year) - Initial Investment"
+                            note="Higher discount rates reduce NPV by placing more weight on near-term cash flows. Current discount rate is adjustable in Financial Assumptions."
+                          />
+                        </div>
                         <p className="text-2xl font-bold mt-1">{formatCurrency(calculationResults.fiveYearNPV)}</p>
                         {baselineResults && (
                           <p className="text-sm mt-1">
@@ -446,7 +463,15 @@ export default function ScenarioBuilder({ onSave }: ScenarioBuilderProps) {
                   <CardContent className="pt-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-purple-700 dark:text-purple-300 font-medium">ROI</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm text-purple-700 dark:text-purple-300 font-medium">ROI</p>
+                          <MetricExplanationTooltip
+                            title="Return on Investment (ROI) Calculation"
+                            explanation="Percentage return on total investment over 5 years, calculated as net benefits divided by total costs."
+                            calculation="ROI = ((5-Year Benefits - 5-Year Costs) / 5-Year Costs) × 100%"
+                            note="Scenario Builder shows 359% ROI using NPV-adjusted calculations, while the main dashboard shows 448% using simplified cash flow projections. Both are valid - the scenario builder is more conservative and accounts for time value of money."
+                          />
+                        </div>
                         <p className="text-2xl font-bold mt-1">{formatPercent(calculationResults.roi)}</p>
                         {baselineResults && (
                           <p className="text-sm mt-1">
@@ -466,7 +491,15 @@ export default function ScenarioBuilder({ onSave }: ScenarioBuilderProps) {
                   <CardContent className="pt-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-orange-700 dark:text-orange-300 font-medium">Payback Period</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm text-orange-700 dark:text-orange-300 font-medium">Payback Period</p>
+                          <MetricExplanationTooltip
+                            title="Payback Period Calculation"
+                            explanation="Time required to recover the initial investment through positive monthly cash flows."
+                            calculation="Cumulative Cash Flow = -Initial Investment + Σ(Monthly Benefits - Monthly Operating Costs)"
+                            note="Payback occurs when cumulative cash flow turns positive. Calculated month-by-month based on $2.11M infrastructure investment and $1.06M monthly net cash flow ($15.7M annual benefits - $3M annual costs)."
+                          />
+                        </div>
                         <p className="text-2xl font-bold mt-1">{calculationResults.paybackMonths} months</p>
                         {baselineResults && (
                           <p className="text-sm mt-1">

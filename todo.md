@@ -137,3 +137,11 @@
 - [x] Fix Payback Period (updated with correct investment and cash flows, now shows 2 months)
 - [x] Ensure ScenarioBuilder uses unified calculation sources (aligned backend with frontend data)
 - [x] Remove ROI division by 100 in ScenarioBuilder display
+
+
+## Scenario Builder Metric Explanations
+- [x] Create MetricExplanationTooltip component with info icon
+- [x] Add tooltip to Annual Value card explaining calculation methodology
+- [x] Add tooltip to NPV card explaining discount rate and time value of money
+- [x] Add tooltip to ROI card explaining difference from dashboard 448% (scenario uses NPV-based calculation)
+- [x] Add tooltip to Payback Period card explaining monthly cash flow calculation
