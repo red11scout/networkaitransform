@@ -1,0 +1,69 @@
+# BlueAlly AI Transformation Dashboard - TODO
+
+## Export & Reporting
+- [ ] Implement Excel export for scenarios and financial data
+- [ ] Implement PDF export for executive reports
+- [ ] Add customizable report templates
+- [ ] Create branded export with BlueAlly logos
+
+## Scenario Templates
+- [ ] Create Conservative scenario template
+- [ ] Create Aggressive scenario template
+- [ ] Create Realistic scenario template
+- [ ] Add template selection UI in scenario builder
+
+## Team Collaboration
+- [ ] Add scenario sharing functionality
+- [ ] Implement commenting system on scenarios
+- [ ] Add team member permissions (view/edit)
+- [ ] Create activity feed for scenario changes
+
+## Branding Improvements
+- [x] Remove Branding Settings tab
+- [x] Apply BlueAlly circular logo to header
+- [x] Apply BlueAlly full logo to appropriate sections
+- [x] Ensure consistent brand colors throughout
+- [x] Remove "made with manus" footer
+
+## Application Consolidation & Redesign
+- [ ] Analyze current 13 tabs and identify redundancies
+- [ ] Design new 5-6 section information architecture
+- [ ] Consolidate Executive, Problems, and Use Cases into Overview section
+- [ ] Nest Financial, Costs, and Roadmap into Analysis section
+- [ ] Combine Priority Matrix, Scenarios, and Sensitivity into Planning section
+- [ ] Create nested navigation with expandable sections
+- [ ] Remove duplicate content across tabs
+
+## HyperFormula Integration
+- [ ] Migrate all financial calculations to HyperFormula
+- [ ] Migrate ROI calculations to HyperFormula
+- [ ] Migrate sensitivity analysis to HyperFormula
+- [ ] Migrate cost breakdown calculations to HyperFormula
+- [ ] Add calculation verification tests
+- [ ] Ensure 100% deterministic calculations
+
+## Navigation & User Experience
+- [ ] Add onboarding tour for first-time users
+- [ ] Implement contextual tooltips on key metrics
+- [ ] Add help icons with explanations
+- [ ] Create quick navigation sidebar
+- [ ] Add breadcrumb navigation
+- [ ] Implement search functionality
+- [ ] Add keyboard shortcuts guide
+
+## UI/UX Improvements
+- [ ] Simplify navigation structure
+- [ ] Add collapsible sections for nested content
+- [ ] Implement progressive disclosure patterns
+- [ ] Add loading states and skeleton screens
+- [ ] Improve mobile navigation with bottom tabs
+- [ ] Add quick action floating button on mobile
+- [ ] Implement smooth scroll and anchor links
+
+## Testing & Validation
+- [ ] Test all export functionality
+- [ ] Validate all HyperFormula calculations
+- [ ] Test collaboration features
+- [ ] Verify mobile responsiveness
+- [ ] Test onboarding flow
+- [ ] Validate scenario templates

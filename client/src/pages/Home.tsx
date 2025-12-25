@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useHyperFormula } from '@/hooks/useHyperFormula';
 import { FilterProvider } from '@/contexts/FilterContext';
@@ -17,7 +17,6 @@ import PriorityMatrix from '@/components/PriorityMatrix';
 import ScenarioPlanning from '@/components/ScenarioPlanning';
 import SensitivityAnalysis from '@/components/SensitivityAnalysis';
 import ComparisonView from '@/components/ComparisonView';
-import BrandingSettings from '@/components/BrandingSettings';
 import CostAnalysis from '@/components/CostAnalysis';
 import FilterPanel from '@/components/FilterPanel';
 import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
@@ -34,21 +33,23 @@ import {
   TrendingUp, 
   Calculator, 
   GitCompare, 
-  Palette,
   Lightbulb,
   Activity,
   Moon,
   Sun,
   Server,
-  Zap
+  Zap,
+  HelpCircle,
+  Layers,
+  Target
 } from 'lucide-react';
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-
-  const [activeTab, setActiveTab] = useState('executive');
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [analysisSubTab, setAnalysisSubTab] = useState('usecases');
+  const [planningSubTab, setPlanningSubTab] = useState('roadmap');
+  const [scenariosSubTab, setScenariosSubTab] = useState('builder');
   const [comparisonScenarios, setComparisonScenarios] = useState<[number, number] | null>(null);
   const { results, isCalculating } = useHyperFormula();
   const { theme, toggleTheme } = useTheme();
@@ -74,15 +75,13 @@ export default function Home() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 md:gap-4">
                   <div className="flex items-center gap-2 md:gap-3">
-                    <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-primary flex items-center justify-center">
-                      <Zap className="h-4 w-4 md:h-6 md:w-6 text-primary-foreground" />
-                    </div>
+                    <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-8 w-8 md:h-10 md:w-10" />
                     <div>
                       <h1 className="text-lg md:text-2xl font-bold">BlueAlly AI Transformation</h1>
                       <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Financial Impact Dashboard</p>
                     </div>
                   </div>
-                  <img src="/images/blueally-logo.jpg" alt="BlueAlly" className="h-8 md:h-10 ml-2 md:ml-4 rounded-full" />
+                  <img src="/images/blueally-logo.png" alt="BlueAlly" className="h-6 md:h-8 ml-2 md:ml-4" />
                 </div>
                 <div className="flex items-center gap-3 md:gap-6">
                   <div className="hidden lg:flex items-center gap-4 text-sm">
@@ -97,216 +96,337 @@ export default function Home() {
                       <span className="text-muted-foreground">ROI</span>
                     </div>
                   </div>
-                  <div className="lg:hidden flex items-center gap-2 text-xs">
-                    <span className="font-semibold">{formatMillions(results.grandTotals.totalAnnualValue, 1)}</span>
-                    <span className="text-muted-foreground">Value</span>
-                  </div>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleTheme}
-                    className="rounded-full h-8 w-8 md:h-10 md:w-10"
+                    className="rounded-full"
                   >
-                    {theme === 'dark' ? <Sun className="h-4 w-4 md:h-5 md:w-5" /> : <Moon className="h-4 w-4 md:h-5 md:w-5" />}
+                    {theme === 'dark' ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )}
                   </Button>
+                  {isAuthenticated && (
+                    <Button variant="outline" size="sm" onClick={logout}>
+                      Sign Out
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
           </header>
 
           {/* Key Metrics Bar */}
-          <div className="border-b bg-muted/30">
-            <div className="container mx-auto px-4 py-3 md:py-4">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 border-none">
+          <div className="border-b bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5">
+            <div className="container mx-auto px-4 py-4 md:py-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+                <Card className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border-emerald-500/20">
                   <CardContent className="p-3 md:p-4">
-                    <div className="text-xs md:text-sm text-muted-foreground">5-Year NPV</div>
-                    <div className="text-xl md:text-2xl font-bold mt-1">{formatMillions(results.npv)}</div>
-                    <div className="text-[10px] md:text-xs text-muted-foreground mt-1">@ 10% discount rate</div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs md:text-sm text-muted-foreground">Annual Value</p>
+                        <p className="text-xl md:text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                          {formatMillions(results.grandTotals.totalAnnualValue)}
+                        </p>
+                      </div>
+                      <DollarSign className="h-6 w-6 md:h-8 md:w-8 text-emerald-500 opacity-50" />
+                    </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950 dark:to-emerald-900 border-none">
+                <Card className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border-blue-500/20">
                   <CardContent className="p-3 md:p-4">
-                    <div className="text-xs md:text-sm text-muted-foreground">Return on Investment</div>
-                    <div className="text-xl md:text-2xl font-bold mt-1">{formatPercent(results.roi / 100)}</div>
-                    <div className="text-[10px] md:text-xs text-muted-foreground mt-1">Over 5 years</div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs md:text-sm text-muted-foreground">5-Year ROI</p>
+                        <p className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">
+                          {formatPercent(results.roi / 100)}
+                        </p>
+                      </div>
+                      <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-blue-500 opacity-50" />
+                    </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 border-none">
+                <Card className="bg-gradient-to-br from-purple-500/10 to-purple-600/5 border-purple-500/20">
                   <CardContent className="p-3 md:p-4">
-                    <div className="text-xs md:text-sm text-muted-foreground">Total Use Cases</div>
-                    <div className="text-xl md:text-2xl font-bold mt-1">14</div>
-                    <div className="text-[10px] md:text-xs text-muted-foreground mt-1">Across 3 horizons</div>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs md:text-sm text-muted-foreground">Use Cases</p>
+                        <p className="text-xl md:text-2xl font-bold text-purple-600 dark:text-purple-400">
+                          14
+                        </p>
+                      </div>
+                      <Grid3x3 className="h-6 w-6 md:h-8 md:w-8 text-purple-500 opacity-50" />
+                    </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 border-none">
-                  <CardContent className="p-3 md:p-4">
-                    <div className="text-xs md:text-sm text-muted-foreground">Payback Period</div>
-                    <div className="text-xl md:text-2xl font-bold mt-1">11 mo</div>
-                    <div className="text-[10px] md:text-xs text-muted-foreground mt-1">Rapid value delivery</div>
-                  </CardContent>
-                </Card>
+
               </div>
             </div>
           </div>
 
           {/* Main Content */}
-          <main className="container mx-auto px-4 py-6">
+          <main className="container mx-auto px-4 py-6 md:py-8">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-              <TabsList className="flex overflow-x-auto gap-1 md:gap-2 h-auto p-1 md:p-2 bg-muted/50 scrollbar-hide">
-                <TabsTrigger value="executive" className="flex items-center gap-2">
-                  <BarChart3 className="h-4 w-4" />
-                  <span className="hidden sm:inline">Executive</span>
-                </TabsTrigger>
-                <TabsTrigger value="problems" className="flex items-center gap-2">
+              {/* Main Navigation - 5 Core Sections */}
+              <TabsList className="w-full justify-start overflow-x-auto flex-nowrap bg-muted/50 p-1 rounded-lg">
+                <TabsTrigger value="overview" className="flex items-center gap-2">
                   <Lightbulb className="h-4 w-4" />
-                  <span className="hidden sm:inline">Problems</span>
+                  <span>Overview</span>
                 </TabsTrigger>
-                <TabsTrigger value="usecases" className="flex items-center gap-2">
-                  <Grid3x3 className="h-4 w-4" />
-                  <span className="hidden sm:inline">Use Cases</span>
+                <TabsTrigger value="analysis" className="flex items-center gap-2">
+                  <BarChart3 className="h-4 w-4" />
+                  <span>Analysis</span>
                 </TabsTrigger>
-                <TabsTrigger value="financial" className="flex items-center gap-2">
-                  <DollarSign className="h-4 w-4" />
-                  <span className="hidden sm:inline">Financial</span>
-                </TabsTrigger>
-                <TabsTrigger value="costs" className="flex items-center gap-2">
-                  <Server className="h-4 w-4" />
-                  <span className="hidden sm:inline">Costs</span>
-                </TabsTrigger>
-                <TabsTrigger value="roadmap" className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4" />
-                  <span className="hidden sm:inline">Roadmap</span>
-                </TabsTrigger>
-                <TabsTrigger value="matrix" className="flex items-center gap-2">
-                  <Grid2x2 className="h-4 w-4" />
-                  <span className="hidden sm:inline">Priority Matrix</span>
+                <TabsTrigger value="planning" className="flex items-center gap-2">
+                  <Target className="h-4 w-4" />
+                  <span>Planning</span>
                 </TabsTrigger>
                 <TabsTrigger value="scenarios" className="flex items-center gap-2">
-                  <Settings2 className="h-4 w-4" />
-                  <span className="hidden sm:inline">Scenarios</span>
+                  <Layers className="h-4 w-4" />
+                  <span>Scenarios</span>
                 </TabsTrigger>
-                <TabsTrigger value="scenario-builder" className="flex items-center gap-2">
-                  <Zap className="h-4 w-4" />
-                  <span className="hidden sm:inline">Builder</span>
-                </TabsTrigger>
-                <TabsTrigger value="saved-scenarios" className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4" />
-                  <span className="hidden sm:inline">Saved</span>
-                </TabsTrigger>
-                <TabsTrigger value="sensitivity" className="flex items-center gap-2">
-                  <Activity className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sensitivity</span>
-                </TabsTrigger>
-                <TabsTrigger value="calculations" className="flex items-center gap-2">
-                  <Calculator className="h-4 w-4" />
-                  <span className="hidden sm:inline">Calculations</span>
-                </TabsTrigger>
-                <TabsTrigger value="comparison" className="flex items-center gap-2">
-                  <GitCompare className="h-4 w-4" />
-                  <span className="hidden sm:inline">Comparison</span>
-                </TabsTrigger>
-                <TabsTrigger value="branding" className="flex items-center gap-2">
-                  <Palette className="h-4 w-4" />
-                  <span className="hidden sm:inline">Branding</span>
+                <TabsTrigger value="insights" className="flex items-center gap-2">
+                  <HelpCircle className="h-4 w-4" />
+                  <span>Insights</span>
                 </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="executive" className="space-y-6">
-                {results && <ExecutiveDashboard results={results} />}
+              {/* Overview Tab */}
+              <TabsContent value="overview" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Executive Overview</CardTitle>
+                    <CardDescription>
+                      Comprehensive summary of AI transformation opportunities and financial impact
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ExecutiveDashboard results={results} />
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Problem-Solution Mapping</CardTitle>
+                    <CardDescription>
+                      Business challenges paired with AI solutions and expected improvements
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ProblemSolutionOverview />
+                  </CardContent>
+                </Card>
               </TabsContent>
 
-              <TabsContent value="problems" className="space-y-6">
-                <ProblemSolutionOverview />
+              {/* Analysis Tab with Nested Navigation */}
+              <TabsContent value="analysis" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Financial Analysis</CardTitle>
+                    <CardDescription>
+                      Detailed financial metrics, use case analysis, and cost breakdowns
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Tabs value={analysisSubTab} onValueChange={setAnalysisSubTab}>
+                      <TabsList className="w-full justify-start mb-6">
+                        <TabsTrigger value="usecases">Use Cases</TabsTrigger>
+                        <TabsTrigger value="financial">Financial Projections</TabsTrigger>
+                        <TabsTrigger value="costs">Cost Breakdown</TabsTrigger>
+                      </TabsList>
+
+                      <TabsContent value="usecases">
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                          <div className="lg:col-span-1">
+                            <FilterPanel />
+                          </div>
+                          <div className="lg:col-span-3">
+                            <UseCasesExplorer results={results} />
+                          </div>
+                        </div>
+                      </TabsContent>
+
+                      <TabsContent value="financial">
+                        <FinancialProjections results={results} />
+                      </TabsContent>
+
+                      <TabsContent value="costs">
+                        <CostAnalysis />
+                      </TabsContent>
+                    </Tabs>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
-              <TabsContent value="usecases" className="space-y-6">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                  <div className="lg:col-span-1">
-                    <FilterPanel />
-                  </div>
-                  <div className="lg:col-span-3">
-                    {results && <UseCasesExplorer results={results} />}
-                  </div>
-                </div>
+              {/* Planning Tab with Nested Navigation */}
+              <TabsContent value="planning" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Implementation Planning</CardTitle>
+                    <CardDescription>
+                      Roadmap, prioritization, and sensitivity analysis for strategic planning
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Tabs value={planningSubTab} onValueChange={setPlanningSubTab}>
+                      <TabsList className="w-full justify-start mb-6">
+                        <TabsTrigger value="roadmap">Roadmap</TabsTrigger>
+                        <TabsTrigger value="matrix">Priority Matrix</TabsTrigger>
+                        <TabsTrigger value="sensitivity">Sensitivity Analysis</TabsTrigger>
+                      </TabsList>
+
+                      <TabsContent value="roadmap">
+                        <HorizonRoadmap results={results} />
+                      </TabsContent>
+
+                      <TabsContent value="matrix">
+                        <PriorityMatrix />
+                      </TabsContent>
+
+                      <TabsContent value="sensitivity">
+                        <SensitivityAnalysis />
+                      </TabsContent>
+                    </Tabs>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
-              <TabsContent value="financial" className="space-y-6">
-                {results && <FinancialProjections results={results} />}
-              </TabsContent>
-
-              <TabsContent value="costs" className="space-y-6">
-                <CostAnalysis />
-              </TabsContent>
-
-              <TabsContent value="roadmap" className="space-y-6">
-                {results && <HorizonRoadmap results={results} />}
-              </TabsContent>
-
-              <TabsContent value="matrix" className="space-y-6">
-                <PriorityMatrix />
-              </TabsContent>
-
+              {/* Scenarios Tab with Nested Navigation */}
               <TabsContent value="scenarios" className="space-y-6">
-                <ScenarioPlanning />
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Scenario Management</CardTitle>
+                    <CardDescription>
+                      Create, save, and compare custom financial scenarios
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Tabs value={scenariosSubTab} onValueChange={setScenariosSubTab}>
+                      <TabsList className="w-full justify-start mb-6">
+                        <TabsTrigger value="builder">Builder</TabsTrigger>
+                        <TabsTrigger value="saved">Saved Scenarios</TabsTrigger>
+                        <TabsTrigger value="comparison">Comparison</TabsTrigger>
+                      </TabsList>
+
+                      <TabsContent value="builder">
+                        {isAuthenticated ? (
+                          <ScenarioBuilder onSave={() => setScenariosSubTab('saved')} />
+                        ) : (
+                          <div className="text-center space-y-4 py-12">
+                            <p className="text-lg font-medium">Sign in to create scenarios</p>
+                            <p className="text-muted-foreground">Save and manage custom financial scenarios</p>
+                            <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+                          </div>
+                        )}
+                      </TabsContent>
+
+                      <TabsContent value="saved">
+                        {isAuthenticated ? (
+                          comparisonScenarios ? (
+                            <ScenarioComparison 
+                              scenarioIds={comparisonScenarios} 
+                              onBack={() => setComparisonScenarios(null)} 
+                            />
+                          ) : (
+                            <SavedScenarios onCompare={(ids) => setComparisonScenarios(ids)} />
+                          )
+                        ) : (
+                          <div className="text-center space-y-4 py-12">
+                            <p className="text-lg font-medium">Sign in to view saved scenarios</p>
+                            <p className="text-muted-foreground">Access your saved financial scenarios</p>
+                            <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+                          </div>
+                        )}
+                      </TabsContent>
+
+                      <TabsContent value="comparison">
+                        <ComparisonView />
+                      </TabsContent>
+                    </Tabs>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
-              <TabsContent value="scenario-builder" className="space-y-6">
-                {isAuthenticated ? (
-                  <ScenarioBuilder onSave={() => setActiveTab('saved-scenarios')} />
-                ) : (
-                  <Card>
-                    <CardContent className="pt-6 flex items-center justify-center h-96">
-                      <div className="text-center space-y-4">
-                        <p className="text-lg font-medium">Sign in to create scenarios</p>
-                        <p className="text-muted-foreground">Save and manage custom financial scenarios</p>
-                        <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+              {/* Insights Tab */}
+              <TabsContent value="insights" className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Calculation Transparency</CardTitle>
+                    <CardDescription>
+                      Detailed view of all financial calculations and methodology
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <CalculationsView results={results} />
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle>How to Use This Dashboard</CardTitle>
+                    <CardDescription>
+                      Quick guide to navigating and utilizing all features
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 border rounded-lg">
+                        <h4 className="font-semibold mb-2 flex items-center gap-2">
+                          <Lightbulb className="h-4 w-4 text-primary" />
+                          Overview
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          Start here for executive summary and problem-solution mapping. Perfect for stakeholder presentations.
+                        </p>
                       </div>
-                    </CardContent>
-                  </Card>
-                )}
-              </TabsContent>
 
-              <TabsContent value="saved-scenarios" className="space-y-6">
-                {isAuthenticated ? (
-                  comparisonScenarios ? (
-                    <ScenarioComparison 
-                      scenarioIds={comparisonScenarios} 
-                      onBack={() => setComparisonScenarios(null)} 
-                    />
-                  ) : (
-                    <SavedScenarios onCompare={(ids) => setComparisonScenarios(ids)} />
-                  )
-                ) : (
-                  <Card>
-                    <CardContent className="pt-6 flex items-center justify-center h-96">
-                      <div className="text-center space-y-4">
-                        <p className="text-lg font-medium">Sign in to view saved scenarios</p>
-                        <p className="text-muted-foreground">Access your saved financial scenarios</p>
-                        <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+                      <div className="p-4 border rounded-lg">
+                        <h4 className="font-semibold mb-2 flex items-center gap-2">
+                          <BarChart3 className="h-4 w-4 text-primary" />
+                          Analysis
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          Deep dive into use cases, financial projections, and cost breakdowns. Filter and compare different scenarios.
+                        </p>
                       </div>
-                    </CardContent>
-                  </Card>
-                )}
-              </TabsContent>
 
-              <TabsContent value="sensitivity" className="space-y-6">
-                <SensitivityAnalysis />
-              </TabsContent>
+                      <div className="p-4 border rounded-lg">
+                        <h4 className="font-semibold mb-2 flex items-center gap-2">
+                          <Target className="h-4 w-4 text-primary" />
+                          Planning
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          Visualize implementation roadmap, prioritize use cases, and run sensitivity analysis on key variables.
+                        </p>
+                      </div>
 
-              <TabsContent value="calculations" className="space-y-6">
-                {results && <CalculationsView results={results} />}
-              </TabsContent>
+                      <div className="p-4 border rounded-lg">
+                        <h4 className="font-semibold mb-2 flex items-center gap-2">
+                          <Layers className="h-4 w-4 text-primary" />
+                          Scenarios
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          Create custom scenarios by adjusting assumptions, save them for later, and compare multiple scenarios side-by-side.
+                        </p>
+                      </div>
+                    </div>
 
-              <TabsContent value="comparison" className="space-y-6">
-                <ComparisonView />
-              </TabsContent>
-
-              <TabsContent value="branding" className="space-y-6">
-                <BrandingSettings />
+                    <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                      <h4 className="font-semibold mb-2">💡 Pro Tips</h4>
+                      <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                        <li>Use filters in Analysis → Use Cases to focus on specific horizons or value ranges</li>
+                        <li>Drag use cases in the Priority Matrix to explore different prioritization strategies</li>
+                        <li>Create multiple scenarios to model optimistic, realistic, and conservative cases</li>
+                        <li>Export data for presentations using the export buttons throughout the dashboard</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           </main>
@@ -316,7 +436,7 @@ export default function Home() {
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <img src="/images/blueally-logo.jpg" alt="BlueAlly" className="h-5 rounded-full" />
+                  <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-5" />
                   <span>© 2024 BlueAlly. All rights reserved.</span>
                 </div>
                 <div>
