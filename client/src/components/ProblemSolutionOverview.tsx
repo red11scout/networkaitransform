@@ -25,6 +25,7 @@ import {
   Users,
   Wrench
 } from 'lucide-react';
+import { KPIBreakdownDialog } from '@/components/KPIBreakdownDialog';
 
 const categoryIcons: Record<string, any> = {
   operational: Zap,
@@ -116,20 +117,25 @@ export default function ProblemSolutionOverview() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 rounded-xl p-6 border border-amber-500/20">
-              <div className="flex items-center gap-2 md:gap-3 mb-2">
-                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
-                  <CheckCircle2 className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+            <KPIBreakdownDialog>
+              <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 rounded-xl p-6 border border-amber-500/20 cursor-pointer hover:border-amber-500/40 transition-all hover:shadow-lg">
+                <div className="flex items-center gap-2 md:gap-3 mb-2">
+                  <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                    <CheckCircle2 className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <div>
+                    <div className="text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400">14</div>
+                    <div className="text-sm text-muted-foreground">KPI Improvements</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400">42</div>
-                  <div className="text-sm text-muted-foreground">KPI Improvements</div>
-                </div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Primary KPI for each initiative with baseline, target, and timeframe
+                </p>
+                <p className="text-xs text-amber-600 dark:text-amber-400 mt-2 font-medium">
+                  Click to view breakdown →
+                </p>
               </div>
-              <p className="text-xs text-muted-foreground mt-2">
-                Measurable metrics with baseline, target, and timeframe for each initiative
-              </p>
-            </div>
+            </KPIBreakdownDialog>
           </div>
 
           {/* Strategic Context */}

@@ -117,8 +117,13 @@
 
 
 ## UI Enhancements
-- [ ] Add color to use case comparison bar chart
-- [ ] Create KPI breakdown dialog component
-- [ ] Make "42 KPI Improvements" clickable in Problem Solution section
-- [ ] Connect KPI card to breakdown dialog
-- [ ] Test both features
+- [x] Add color to use case comparison bar chart
+- [x] Create KPI breakdown dialog component
+- [x] Make "42 KPI Improvements" clickable in Problem Solution section
+- [x] Connect KPI card to breakdown dialog
+- [x] Test both features
+
+## KPI Count Correction
+- [x] Update Problem Solution section KPI count from 42 to 14
+- [x] Update KPI dialog title from 42 to 14
+- [x] Update KPI dialog description to reflect accurate count

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useComparison } from '@/contexts/ComparisonContext';
 import { formatMillions, formatPercent, formatNumber, getHorizonColor, getHorizonLabel } from '@/lib/utils';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Cell } from 'recharts';
 import { X, TrendingUp, Clock, Target, DollarSign } from 'lucide-react';
 
 export default function ComparisonView() {
@@ -143,7 +143,7 @@ export default function ComparisonView() {
               />
               <Bar dataKey="value" name="Annual Value" radius={[8, 8, 0, 0]}>
                 {comparisonData.map((entry, index) => (
-                  <rect key={`cell-${index}`} fill={colors[index]} />
+                  <Cell key={`cell-${index}`} fill={colors[index]} />
                 ))}
               </Bar>
             </BarChart>
