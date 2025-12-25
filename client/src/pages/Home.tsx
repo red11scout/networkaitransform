@@ -17,6 +17,7 @@ import ScenarioPlanning from '@/components/ScenarioPlanning';
 import SensitivityAnalysis from '@/components/SensitivityAnalysis';
 import ComparisonView from '@/components/ComparisonView';
 import BrandingSettings from '@/components/BrandingSettings';
+import CostAnalysis from '@/components/CostAnalysis';
 import FilterPanel from '@/components/FilterPanel';
 import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
 import { 
@@ -26,15 +27,16 @@ import {
   Calendar, 
   Grid2x2, 
   Settings2, 
-  Activity, 
-  Calculator,
-  GitCompare,
+  TrendingUp, 
+  Calculator, 
+  GitCompare, 
   Palette,
-  Filter,
+  Lightbulb,
+  Activity,
   Moon,
   Sun,
-  Zap,
-  Lightbulb
+  Server,
+  Zap
 } from 'lucide-react';
 
 export default function Home() {
@@ -162,6 +164,10 @@ export default function Home() {
                   <DollarSign className="h-4 w-4" />
                   <span className="hidden sm:inline">Financial</span>
                 </TabsTrigger>
+                <TabsTrigger value="costs" className="flex items-center gap-2">
+                  <Server className="h-4 w-4" />
+                  <span className="hidden sm:inline">Costs</span>
+                </TabsTrigger>
                 <TabsTrigger value="roadmap" className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   <span className="hidden sm:inline">Roadmap</span>
@@ -213,6 +219,10 @@ export default function Home() {
 
               <TabsContent value="financial" className="space-y-6">
                 {results && <FinancialProjections results={results} />}
+              </TabsContent>
+
+              <TabsContent value="costs" className="space-y-6">
+                <CostAnalysis />
               </TabsContent>
 
               <TabsContent value="roadmap" className="space-y-6">
