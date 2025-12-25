@@ -75,15 +75,12 @@ export default function Home() {
           <header className="border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-50">
             <div className="container mx-auto px-4 py-3 md:py-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 md:gap-4">
-                  <div className="flex items-center gap-2 md:gap-3">
-                    <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-8 w-8 md:h-10 md:w-10" />
-                    <div>
-                      <h1 className="text-lg md:text-2xl font-bold">BlueAlly AI Transformation</h1>
-                      <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Financial Impact Dashboard</p>
-                    </div>
+                <div className="flex items-center gap-3 md:gap-4">
+                  <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-10 w-10 md:h-12 md:w-12" />
+                  <div>
+                    <h1 className="text-lg md:text-2xl font-bold">Verizon AI Transformation</h1>
+                    <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Financial Impact Dashboard</p>
                   </div>
-                  <img src="/images/blueally-logo.png" alt="BlueAlly" className="h-6 md:h-8 ml-2 md:ml-4" />
                 </div>
                 <div className="flex items-center gap-3 md:gap-6">
                   <div className="hidden lg:flex items-center gap-4 text-sm">
@@ -98,6 +95,7 @@ export default function Home() {
                       <span className="text-muted-foreground">ROI</span>
                     </div>
                   </div>
+                  <img src="/images/blueally-logo.png" alt="BlueAlly" className="hidden md:block h-7 md:h-9" />
                   <OnboardingTour />
                   <Button
                     variant="ghost"
@@ -441,7 +439,7 @@ export default function Home() {
               <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-5" />
-                  <span>© 2024 BlueAlly. All rights reserved.</span>
+                  <span>© 2026 BlueAlly. All rights reserved.</span>
                 </div>
                 <div>
                   <span>AI Transformation Financial Impact Dashboard</span>

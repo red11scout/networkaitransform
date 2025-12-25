@@ -119,9 +119,13 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                     borderRadius: '8px'
                   }}
                 />
-                <Bar dataKey="value" radius={[8, 8, 0, 0]}>
+                <Bar 
+                  dataKey="value" 
+                  radius={[8, 8, 0, 0]}
+                  label={{ position: 'top', formatter: (value: number) => `$${(value / 1000000).toFixed(0)}M`, fontSize: 12, fontWeight: 600 }}
+                >
                   {horizonData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={getHorizonColor(entry.name)} />
+                    <Cell key={`cell-${index}`} fill={getHorizonColor(entry.name)} fillOpacity={1} />
                   ))}
                 </Bar>
               </BarChart>
@@ -152,7 +156,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                   dataKey="value"
                 >
                   {driversData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                    <Cell key={`cell-${index}`} fill={entry.color} fillOpacity={1} />
                   ))}
                 </Pie>
                 <Tooltip 

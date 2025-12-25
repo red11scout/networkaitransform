@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatCurrency(value: number, decimals: number = 2): string {
+export function formatCurrency(value: number, decimals: number = 0): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -14,11 +14,11 @@ export function formatCurrency(value: number, decimals: number = 2): string {
   }).format(value);
 }
 
-export function formatMillions(value: number, decimals: number = 2): string {
+export function formatMillions(value: number, decimals: number = 0): string {
   return `$${(value / 1000000).toFixed(decimals)}M`;
 }
 
-export function formatPercent(value: number, decimals: number = 1): string {
+export function formatPercent(value: number, decimals: number = 0): string {
   return `${value.toFixed(decimals)}%`;
 }
 

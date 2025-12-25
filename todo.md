@@ -67,3 +67,14 @@
 - [ ] Verify mobile responsiveness
 - [ ] Test onboarding flow
 - [ ] Validate scenario templates
+
+
+## Dashboard Polish & Refinements
+- [x] Remove decimals from all numbers (currency, percentages, metrics)
+- [x] Remove hover backgrounds on chart bars and slices
+- [x] Add readable labels directly on chart bars
+- [x] Change application title to "Verizon AI Transformation"
+- [x] Update footer year to 2026
+- [x] Fix BlueAlly logo positioning in header
+- [x] Verify scenario saving works correctly with user authentication
+- [x] Test and optimize mobile experience without impacting desktop
