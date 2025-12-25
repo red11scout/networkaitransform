@@ -114,3 +114,11 @@
 - [x] Add tooltip to Financial Projections payback period
 - [x] Add tooltip to Cost Analysis payback period displays
 - [x] Test tooltip functionality across all screens
+
+
+## UI Enhancements
+- [ ] Add color to use case comparison bar chart
+- [ ] Create KPI breakdown dialog component
+- [ ] Make "42 KPI Improvements" clickable in Problem Solution section
+- [ ] Connect KPI card to breakdown dialog
+- [ ] Test both features
