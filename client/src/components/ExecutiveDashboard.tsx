@@ -123,6 +123,8 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                   dataKey="value" 
                   radius={[8, 8, 0, 0]}
                   label={{ position: 'top', formatter: (value: number) => `$${(value / 1000000).toFixed(0)}M`, fontSize: 12, fontWeight: 600 }}
+                  cursor="default"
+                  activeBar={false}
                 >
                   {horizonData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={getHorizonColor(entry.name)} fillOpacity={1} />

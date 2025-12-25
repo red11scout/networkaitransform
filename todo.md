@@ -78,3 +78,12 @@
 - [x] Fix BlueAlly logo positioning in header
 - [x] Verify scenario saving works correctly with user authentication
 - [x] Test and optimize mobile experience without impacting desktop
+
+
+## Critical Bug Fixes
+- [x] Remove grey hover box from all bar charts completely
+- [x] Fix ROI display in header (should show 448% not 4%)
+- [x] Move BlueAlly logo to far left of header with better positioning
+- [x] Fix onboarding guide transparency for better readability
+- [x] Fix Comparison tab instructions (remove reference to non-existent Use Case Explorer)
+- [x] Ensure use case selection works in Comparison tab

@@ -75,8 +75,8 @@ export default function Home() {
           <header className="border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-50">
             <div className="container mx-auto px-4 py-3 md:py-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 md:gap-4">
-                  <img src="/images/blueally-icon.png" alt="BlueAlly" className="h-10 w-10 md:h-12 md:w-12" />
+                <div className="flex items-center gap-3 md:gap-6">
+                  <img src="/images/blueally-logo.png" alt="BlueAlly" className="h-8 md:h-10" />
                   <div>
                     <h1 className="text-lg md:text-2xl font-bold">Verizon AI Transformation</h1>
                     <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Financial Impact Dashboard</p>
@@ -91,11 +91,10 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Activity className="h-4 w-4 text-primary" />
-                      <span className="font-semibold">{formatPercent(results.roi / 100)}</span>
+                      <span className="font-semibold">{formatPercent(results.roi)}</span>
                       <span className="text-muted-foreground">ROI</span>
                     </div>
                   </div>
-                  <img src="/images/blueally-logo.png" alt="BlueAlly" className="hidden md:block h-7 md:h-9" />
                   <OnboardingTour />
                   <Button
                     variant="ghost"
