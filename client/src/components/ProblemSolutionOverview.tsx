@@ -64,7 +64,7 @@ export default function ProblemSolutionOverview() {
                 <CardTitle className="text-3xl font-bold">AI Transformation Problem-Solution Framework</CardTitle>
               </div>
               <CardDescription className="text-base max-w-4xl">
-                A comprehensive analysis of Verizon's operational challenges, strategic AI solutions, and quantified business improvements across 14 transformative initiatives spanning immediate wins to long-term strategic innovation.
+                A comprehensive analysis of BlueAlly's operational challenges, strategic AI solutions, and quantified business improvements across 14 transformative initiatives spanning immediate wins to long-term strategic innovation.
               </CardDescription>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function ProblemSolutionOverview() {
               Strategic Context
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This framework addresses Verizon's most pressing operational and strategic challenges through targeted AI interventions. Each solution is designed to deliver measurable business impact while building foundational capabilities for sustained competitive advantage. The initiatives span from immediate operational wins (Horizon 1) through workforce augmentation (Horizon 2) to transformative strategic capabilities (Horizon 3), supported by essential governance and organizational enablers.
+              This framework addresses BlueAlly's most pressing operational and strategic challenges through targeted AI interventions. Each solution is designed to deliver measurable business impact while building foundational capabilities for sustained competitive advantage. The initiatives span from immediate operational wins (Horizon 1) through workforce augmentation (Horizon 2) to transformative strategic capabilities (Horizon 3), supported by essential governance and organizational enablers.
             </p>
           </div>
         </CardContent>

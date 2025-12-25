@@ -69,11 +69,11 @@ export default function Home() {
                       <Zap className="h-4 w-4 md:h-6 md:w-6 text-primary-foreground" />
                     </div>
                     <div>
-                      <h1 className="text-lg md:text-2xl font-bold">Verizon AI Transformation</h1>
+                      <h1 className="text-lg md:text-2xl font-bold">BlueAlly AI Transformation</h1>
                       <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Financial Impact Dashboard</p>
                     </div>
                   </div>
-                  <img src="/images/verizon-logo.png" alt="Verizon" className="h-6 md:h-8 ml-2 md:ml-4" />
+                  <img src="/images/blueally-logo.jpg" alt="BlueAlly" className="h-8 md:h-10 ml-2 md:ml-4 rounded-full" />
                 </div>
                 <div className="flex items-center gap-3 md:gap-6">
                   <div className="hidden lg:flex items-center gap-4 text-sm">
@@ -260,8 +260,8 @@ export default function Home() {
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <img src="/images/verizon-logo.png" alt="Verizon" className="h-5" />
-                  <span>© 2024 Verizon. All rights reserved.</span>
+                  <img src="/images/blueally-logo.jpg" alt="BlueAlly" className="h-5 rounded-full" />
+                  <span>© 2024 BlueAlly. All rights reserved.</span>
                 </div>
                 <div>
                   <span>AI Transformation Financial Impact Dashboard</span>

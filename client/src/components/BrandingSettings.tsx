@@ -7,9 +7,9 @@ import { Palette, Download, FileText } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function BrandingSettings() {
-  const [companyName, setCompanyName] = useState('Verizon');
+  const [companyName, setCompanyName] = useState('BlueAlly');
   const [reportTitle, setReportTitle] = useState('AI Transformation Dashboard');
-  const [primaryColor, setPrimaryColor] = useState('#cd040b');
+  const [primaryColor, setPrimaryColor] = useState('#0047bb');
   const [showLogo, setShowLogo] = useState(true);
 
   const handleExportPDF = () => {
@@ -111,7 +111,7 @@ export default function BrandingSettings() {
               </div>
               {showLogo && (
                 <img 
-                  src="/images/verizon-logo.png" 
+                  src="/images/blueally-logo.jpg" 
                   alt="Company Logo" 
                   className="h-8 object-contain"
                 />
@@ -208,15 +208,15 @@ export default function BrandingSettings() {
         </CardContent>
       </Card>
 
-      {/* Verizon Brand Guidelines */}
-      <Card className="border-2 border-primary/20 bg-gradient-to-br from-red-50/50 to-white dark:from-red-950/20 dark:to-background">
+      {/* BlueAlly Brand Guidelines */}
+      <Card className="border-2 border-primary/20 bg-gradient-to-br from-blue-50/50 to-white dark:from-blue-950/20 dark:to-background">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <img src="/images/verizon-logo.png" alt="Verizon" className="h-6" />
-            Verizon Brand Guidelines
+            <img src="/images/blueally-logo.jpg" alt="BlueAlly" className="h-6 rounded-full" />
+            BlueAlly Brand Guidelines
           </CardTitle>
           <CardDescription>
-            Official Verizon branding applied to this dashboard
+            Official BlueAlly branding applied to this dashboard
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -225,10 +225,10 @@ export default function BrandingSettings() {
               <h4 className="font-semibold mb-2">Primary Colors</h4>
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded border" style={{ backgroundColor: '#cd040b' }}></div>
+                  <div className="w-12 h-12 rounded border" style={{ backgroundColor: '#0047bb' }}></div>
                   <div>
-                    <div className="font-medium">Verizon Red</div>
-                    <div className="text-xs text-muted-foreground">#cd040b</div>
+                    <div className="font-medium">BlueAlly Blue</div>
+                    <div className="text-xs text-muted-foreground">#0047bb</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -258,7 +258,7 @@ export default function BrandingSettings() {
 
           <div className="pt-4 border-t">
             <p className="text-sm text-muted-foreground">
-              This dashboard follows Verizon's official brand guidelines to ensure consistency 
+              This dashboard follows BlueAlly's official brand guidelines to ensure consistency 
               with corporate identity standards. All exports will maintain these brand standards 
               for professional presentations and reports.
             </p>
