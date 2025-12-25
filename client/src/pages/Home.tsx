@@ -23,7 +23,7 @@ import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
 import ScenarioBuilder from '@/components/ScenarioBuilder';
 import SavedScenarios from '@/components/SavedScenarios';
 import ScenarioComparison from '@/components/ScenarioComparison';
-import { OnboardingTour } from '@/components/OnboardingTour';
+
 import { ContextualTooltip, tooltips } from '@/components/ContextualTooltip';
 import { 
   BarChart3, 
@@ -41,7 +41,7 @@ import {
   Sun,
   Server,
   Zap,
-  HelpCircle,
+
   Layers,
   Target
 } from 'lucide-react';
@@ -95,7 +95,7 @@ export default function Home() {
                       <span className="text-muted-foreground">ROI</span>
                     </div>
                   </div>
-                  <OnboardingTour />
+
                   <Button
                     variant="ghost"
                     size="icon"
@@ -192,7 +192,7 @@ export default function Home() {
                   <span>Scenarios</span>
                 </TabsTrigger>
                 <TabsTrigger value="insights" className="flex items-center gap-2">
-                  <HelpCircle className="h-4 w-4" />
+                  <Lightbulb className="h-4 w-4" />
                   <span>Insights</span>
                 </TabsTrigger>
               </TabsList>

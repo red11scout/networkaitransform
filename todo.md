@@ -99,3 +99,10 @@
 - [x] Update Cost Breakdown to use unified source (already using costBreakdownData)
 - [x] Update all other components displaying financial data
 - [x] Verify all non-scenario data shows identical values across all screens
+
+
+## UI Cleanup
+- [x] Remove onboarding tour component (question mark button and guided navigation)
+- [x] Remove OnboardingTour component from Home.tsx
+- [x] Remove question mark button from header
+- [x] Clean up unused OnboardingTour component file
