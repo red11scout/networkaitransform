@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAuth } from '@/_core/hooks/useAuth';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -20,6 +21,9 @@ import BrandingSettings from '@/components/BrandingSettings';
 import CostAnalysis from '@/components/CostAnalysis';
 import FilterPanel from '@/components/FilterPanel';
 import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
+import ScenarioBuilder from '@/components/ScenarioBuilder';
+import SavedScenarios from '@/components/SavedScenarios';
+import ScenarioComparison from '@/components/ScenarioComparison';
 import { 
   BarChart3, 
   Grid3x3, 
@@ -40,7 +44,12 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [activeTab, setActiveTab] = useState('executive');
+  const [comparisonScenarios, setComparisonScenarios] = useState<[number, number] | null>(null);
   const { results, isCalculating } = useHyperFormula();
   const { theme, toggleTheme } = useTheme();
 
@@ -180,6 +189,14 @@ export default function Home() {
                   <Settings2 className="h-4 w-4" />
                   <span className="hidden sm:inline">Scenarios</span>
                 </TabsTrigger>
+                <TabsTrigger value="scenario-builder" className="flex items-center gap-2">
+                  <Zap className="h-4 w-4" />
+                  <span className="hidden sm:inline">Builder</span>
+                </TabsTrigger>
+                <TabsTrigger value="saved-scenarios" className="flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4" />
+                  <span className="hidden sm:inline">Saved</span>
+                </TabsTrigger>
                 <TabsTrigger value="sensitivity" className="flex items-center gap-2">
                   <Activity className="h-4 w-4" />
                   <span className="hidden sm:inline">Sensitivity</span>
@@ -235,6 +252,45 @@ export default function Home() {
 
               <TabsContent value="scenarios" className="space-y-6">
                 <ScenarioPlanning />
+              </TabsContent>
+
+              <TabsContent value="scenario-builder" className="space-y-6">
+                {isAuthenticated ? (
+                  <ScenarioBuilder onSave={() => setActiveTab('saved-scenarios')} />
+                ) : (
+                  <Card>
+                    <CardContent className="pt-6 flex items-center justify-center h-96">
+                      <div className="text-center space-y-4">
+                        <p className="text-lg font-medium">Sign in to create scenarios</p>
+                        <p className="text-muted-foreground">Save and manage custom financial scenarios</p>
+                        <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+              </TabsContent>
+
+              <TabsContent value="saved-scenarios" className="space-y-6">
+                {isAuthenticated ? (
+                  comparisonScenarios ? (
+                    <ScenarioComparison 
+                      scenarioIds={comparisonScenarios} 
+                      onBack={() => setComparisonScenarios(null)} 
+                    />
+                  ) : (
+                    <SavedScenarios onCompare={(ids) => setComparisonScenarios(ids)} />
+                  )
+                ) : (
+                  <Card>
+                    <CardContent className="pt-6 flex items-center justify-center h-96">
+                      <div className="text-center space-y-4">
+                        <p className="text-lg font-medium">Sign in to view saved scenarios</p>
+                        <p className="text-muted-foreground">Access your saved financial scenarios</p>
+                        <Button onClick={() => window.location.href = '/api/auth/login'}>Sign In</Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
               </TabsContent>
 
               <TabsContent value="sensitivity" className="space-y-6">
