@@ -143,7 +143,7 @@ export default function Home() {
                       <div>
                         <p className="text-xs md:text-sm text-muted-foreground">5-Year ROI</p>
                         <p className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400">
-                          {formatPercent(results.roi / 100)}
+                          {formatPercent(results.roi)}
                         </p>
                       </div>
                       <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-blue-500 opacity-50" />

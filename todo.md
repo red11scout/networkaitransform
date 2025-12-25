@@ -87,3 +87,15 @@
 - [x] Fix onboarding guide transparency for better readability
 - [x] Fix Comparison tab instructions (remove reference to non-existent Use Case Explorer)
 - [x] Ensure use case selection works in Comparison tab
+
+
+## Data Consistency & Uniformity
+- [x] Audit all financial metrics (ROI, Payback Period, NPV, Annual Value) across all screens
+- [x] Identify inconsistencies in data sources between components
+- [x] Create single unified source of truth for all financial calculations
+- [x] Update header metrics to use unified source
+- [x] Update Executive Overview to use unified source
+- [x] Update Financial Projections to use unified source
+- [x] Update Cost Breakdown to use unified source (already using costBreakdownData)
+- [x] Update all other components displaying financial data
+- [x] Verify all non-scenario data shows identical values across all screens

@@ -1,6 +1,7 @@
 import { HyperFormula } from 'hyperformula';
 import { useEffect, useState } from 'react';
 import { useCases } from '@/lib/useCasesData';
+import { calculateROI } from '@/lib/costBreakdownData';
 
 export interface CalculationResults {
   useCaseTotals: {
@@ -36,6 +37,7 @@ export interface CalculationResults {
   }[];
   npv: number;
   roi: number;
+  paybackPeriod: number;
 }
 
 export function useHyperFormula() {
@@ -139,13 +141,18 @@ export function useHyperFormula() {
       const totalBenefits = fiveYearProjections.reduce((sum, proj) => sum + proj.benefits, 0);
       const roi = ((totalBenefits - totalInvestment) / totalInvestment) * 100;
 
+      // Get payback period from costBreakdownData for consistency
+      const roiData = calculateROI(5);
+      const paybackMonths = roiData.paybackPeriod;
+
       setResults({
         useCaseTotals,
         horizonTotals,
         grandTotals,
         fiveYearProjections,
         npv,
-        roi
+        roi,
+        paybackPeriod: Math.round(paybackMonths)
       });
       setIsCalculating(false);
     };

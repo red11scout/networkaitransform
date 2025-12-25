@@ -331,7 +331,7 @@ export default function CalculationsView({ results }: CalculationsViewProps) {
             <div>
               <h4 className="font-semibold mb-2">Payback Period</h4>
               <p className="text-muted-foreground">
-                The 11-month payback period is calculated as the point where cumulative net cash flow 
+                The {results.paybackPeriod}-month payback period is calculated as the point where cumulative net cash flow 
                 turns positive, indicating when the investment has been fully recovered.
               </p>
             </div>

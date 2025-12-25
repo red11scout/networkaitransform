@@ -17,7 +17,7 @@ export default function ComparisonView() {
             <div className="text-6xl">📊</div>
             <h3 className="text-2xl font-bold">No Use Cases Selected</h3>
             <p className="text-muted-foreground max-w-md">
-              Select up to 4 use cases from the Analysis → Use Cases section to compare them side-by-side with synchronized charts and detailed metrics.
+              Select up to 4 use cases from the Analysis section to compare them side-by-side with synchronized charts and detailed metrics.
             </p>
           </div>
         </CardContent>

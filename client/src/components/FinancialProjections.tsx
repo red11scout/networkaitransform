@@ -76,7 +76,7 @@ export default function FinancialProjections({ results }: FinancialProjectionsPr
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">11 mo</div>
+            <div className="text-3xl font-bold">{results.paybackPeriod} mo</div>
             <p className="text-xs text-muted-foreground mt-1">Break-even point</p>
           </CardContent>
         </Card>

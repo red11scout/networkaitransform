@@ -82,7 +82,7 @@ export default function ExecutiveDashboard({ results }: ExecutiveDashboardProps)
                 <Clock className="h-4 w-4" />
                 <span>Payback Period</span>
               </div>
-              <div className="text-3xl font-bold">11 mo</div>
+              <div className="text-3xl font-bold">{results.paybackPeriod} mo</div>
               <p className="text-xs text-muted-foreground">Rapid value delivery</p>
             </div>
           </div>

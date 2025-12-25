@@ -59,7 +59,7 @@ export function OnboardingTour() {
           element: '.grid.grid-cols-2.md\\:grid-cols-3',
           popover: {
             title: 'Key Metrics',
-            description: '$15.70M annual value, 4.5% ROI across 14 use cases. These metrics are calculated in real-time using HyperFormula for 100% accuracy.',
+            description: '$15.70M annual value, 448% ROI across 14 use cases. These metrics are calculated in real-time using HyperFormula for 100% accuracy.',
             side: 'bottom',
             align: 'center'
           }
