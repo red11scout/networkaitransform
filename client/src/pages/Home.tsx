@@ -23,6 +23,8 @@ import ProblemSolutionOverview from '@/components/ProblemSolutionOverview';
 import ScenarioBuilder from '@/components/ScenarioBuilder';
 import SavedScenarios from '@/components/SavedScenarios';
 import ScenarioComparison from '@/components/ScenarioComparison';
+import { OnboardingTour } from '@/components/OnboardingTour';
+import { ContextualTooltip, tooltips } from '@/components/ContextualTooltip';
 import { 
   BarChart3, 
   Grid3x3, 
@@ -96,11 +98,13 @@ export default function Home() {
                       <span className="text-muted-foreground">ROI</span>
                     </div>
                   </div>
+                  <OnboardingTour />
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={toggleTheme}
                     className="rounded-full"
+                    aria-label="Toggle theme"
                   >
                     {theme === 'dark' ? (
                       <Sun className="h-5 w-5" />

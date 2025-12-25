@@ -1,0 +1,71 @@
+/* Custom Driver.js styles for BlueAlly branding */
+
+.driver-popover {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.driver-popover-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 0.5rem;
+}
+
+.driver-popover-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
+}
+
+.driver-popover-progress-text {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.driver-popover-footer button {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.driver-popover-footer button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.driver-popover-footer button.driver-popover-prev-btn,
+.driver-popover-footer button.driver-popover-close-btn {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.driver-popover-arrow-side-top.driver-popover-arrow {
+  border-top-color: hsl(var(--card));
+}
+
+.driver-popover-arrow-side-bottom.driver-popover-arrow {
+  border-bottom-color: hsl(var(--card));
+}
+
+.driver-popover-arrow-side-left.driver-popover-arrow {
+  border-left-color: hsl(var(--card));
+}
+
+.driver-popover-arrow-side-right.driver-popover-arrow {
+  border-right-color: hsl(var(--card));
+}
+
+/* Dark mode support */
+.dark .driver-popover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
