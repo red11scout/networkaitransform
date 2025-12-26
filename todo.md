@@ -145,3 +145,36 @@
 - [x] Add tooltip to NPV card explaining discount rate and time value of money
 - [x] Add tooltip to ROI card explaining difference from dashboard 448% (scenario uses NPV-based calculation)
 - [x] Add tooltip to Payback Period card explaining monthly cash flow calculation
+
+
+## Scenario Comparison View
+- [ ] Create ScenarioComparison component with side-by-side layout
+- [ ] Add scenario selection dropdowns (compare 2-3 scenarios)
+- [ ] Display metric differences with visual diff highlighting
+- [ ] Add delta indicators (+/- values and percentages)
+- [ ] Create comparison charts for key metrics
+- [ ] Implement "Export Comparison" button
+
+## PowerPoint Export
+- [ ] Create export utility for generating PowerPoint presentations
+- [ ] Design executive summary slide with key metrics
+- [ ] Add financial projections slide with charts
+- [ ] Include use case breakdown slides
+- [ ] Add scenario comparison slide (if scenarios exist)
+- [ ] Implement "Export to PowerPoint" button in header and scenario builder
+
+## Implementation Roadmap Generator
+- [ ] Create RoadmapView component with Gantt chart
+- [ ] Calculate timeline based on selected use cases and time-to-value
+- [ ] Implement dependency mapping between use cases
+- [ ] Add resource allocation visualization
+- [ ] Create milestone markers for key deliverables
+- [ ] Add interactive timeline controls (zoom, filter by horizon)
+
+## Executive Presentation
+- [x] Gather all dashboard data for presentation content
+- [x] Structure presentation outline with executive summary, financial analysis, use cases, roadmap
+- [x] Create slide content with BlueAlly branding (colors, fonts, charts)
+- [x] Generate presentation using slides tool with Alabaster template
+- [x] Ensure all charts are native editable objects with linked data tables
+- [x] Apply BlueAlly color palette and typography consistently

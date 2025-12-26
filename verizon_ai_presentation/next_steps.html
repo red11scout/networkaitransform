@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 40px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 35px; }
+      .timeline-container { margin-bottom: 30px; }
+      .timeline-bar { display: flex; height: 80px; background: #F8F9FA; position: relative; }
+      .timeline-milestone { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 2px solid #E0E0E0; padding: 10px; }
+      .timeline-milestone:last-child { border-right: none; }
+      .milestone-icon { font-size: 24px; color: #04A1FE; margin-bottom: 8px; }
+      .milestone-label { font-family: Consolas, monospace; font-size: 14px; font-weight: bold; color: #001177; text-align: center; margin-bottom: 4px; }
+      .milestone-date { font-family: Verdana, sans-serif; font-size: 12px; color: #666666; }
+      .actions-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; }
+      .action-column { background: #F8F9FA; padding: 20px 22px; }
+      .action-header { font-family: Consolas, monospace; font-size: 18px; font-weight: bold; color: #001177; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 3px solid #04A1FE; }
+      .action-list { list-style: none; padding-left: 0; }
+      .action-list li { font-family: Verdana, sans-serif; font-size: 14px; color: #333333; margin-bottom: 12px; padding-left: 24px; position: relative; line-height: 1.5; }
+      .action-list li:before { content: "▸"; position: absolute; left: 0; color: #04A1FE; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 18 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">Next Steps - Decision Timeline & Action Plan</div>
+            
+            <div class="timeline-container">
+                <div class="timeline-bar">
+                    <div class="timeline-milestone">
+                        <div class="milestone-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="milestone-label">Board Approval</div>
+                        <div class="milestone-date">Week 1</div>
+                    </div>
+                    <div class="timeline-milestone">
+                        <div class="milestone-icon"><i class="fas fa-file-signature"></i></div>
+                        <div class="milestone-label">Vendor Contracts</div>
+                        <div class="milestone-date">Week 2-3</div>
+                    </div>
+                    <div class="timeline-milestone">
+                        <div class="milestone-icon"><i class="fas fa-server"></i></div>
+                        <div class="milestone-label">Infrastructure Deploy</div>
+                        <div class="milestone-date">Month 1-2</div>
+                    </div>
+                    <div class="timeline-milestone">
+                        <div class="milestone-icon"><i class="fas fa-rocket"></i></div>
+                        <div class="milestone-label">H1 Pilot Launch</div>
+                        <div class="milestone-date">Month 2-3</div>
+                    </div>
+                    <div class="timeline-milestone">
+                        <div class="milestone-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="milestone-label">Value Realization</div>
+                        <div class="milestone-date">Month 6</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions-grid">
+                <div class="action-column">
+                    <div class="action-header">Immediate (Week 1-2)</div>
+                    <ul class="action-list">
+                        <li>Present business case to executive leadership and board</li>
+                        <li>Secure $2.11M infrastructure budget approval</li>
+                        <li>Establish AI transformation steering committee</li>
+                        <li>Initiate vendor procurement process (HPE, NVIDIA)</li>
+                        <li>Identify H1 pilot program participants</li>
+                    </ul>
+                </div>
+                
+                <div class="action-column">
+                    <div class="action-header">30 Days (Month 1)</div>
+                    <ul class="action-list">
+                        <li>Finalize vendor contracts and purchase orders</li>
+                        <li>Begin infrastructure deployment (HPE servers, NVIDIA GPUs)</li>
+                        <li>Launch change management and communication plan</li>
+                        <li>Initiate training program development</li>
+                        <li>Establish governance framework and KPI tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="action-column">
+                    <div class="action-header">60 Days (Month 2)</div>
+                    <ul class="action-list">
+                        <li>Complete infrastructure deployment and testing</li>
+                        <li>Launch H1 pilot programs (2 use cases)</li>
+                        <li>Begin workforce training and onboarding</li>
+                        <li>Establish monthly value tracking and reporting</li>
+                        <li>Plan H2 use case development and rollout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

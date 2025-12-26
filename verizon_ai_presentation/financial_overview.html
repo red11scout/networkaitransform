@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 40px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 40px; }
+      .layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; }
+      .metrics-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+      .metrics-table tr { border-bottom: 1px solid #E0E0E0; }
+      .metrics-table td:first-child { font-family: Verdana, sans-serif; font-size: 15px; font-weight: bold; color: #001177; padding: 14px 0; }
+      .metrics-table td:last-child { font-family: Consolas, monospace; font-size: 18px; color: #333333; text-align: right; padding: 14px 0; }
+      .highlight { color: #32BF78; font-weight: bold; }
+      .chart-container { height: 450px; }
+      .insight-box { background: #F8F9FA; padding: 15px 20px; border-left: 4px solid #04A1FE; margin-top: 20px; }
+      .insight-text { font-family: Verdana, sans-serif; font-size: 14px; color: #333333; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 8 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">Financial Overview - $61.4M Net Cash Flow Over 5 Years</div>
+            
+            <div class="layout">
+                <div>
+                    <table class="metrics-table">
+                        <tr>
+                            <td>Infrastructure Investment</td>
+                            <td>$2.11M</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Operating Costs</td>
+                            <td>$3.00M</td>
+                        </tr>
+                        <tr>
+                            <td>Total Annual Value</td>
+                            <td class="highlight">$15.70M</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Net Cash Flow</td>
+                            <td class="highlight">$12.70M</td>
+                        </tr>
+                        <tr>
+                            <td>5-Year NPV (10% discount)</td>
+                            <td class="highlight">$35.00M</td>
+                        </tr>
+                        <tr>
+                            <td>5-Year ROI</td>
+                            <td class="highlight">448%</td>
+                        </tr>
+                        <tr>
+                            <td>Payback Period</td>
+                            <td class="highlight">2 months</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="insight-box">
+                        <div class="insight-text">
+                            <strong>Investment Highlights:</strong> Modest $2.11M infrastructure investment delivers exceptional returns with 2-month payback and 448% ROI. Annual net cash flow of $12.7M funds ongoing operations and future innovation initiatives.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="cashFlowChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const ctx = document.getElementById('cashFlowChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [{
+                    label: 'Net Cash Flow ($M)',
+                    data: [10.59, 12.70, 12.70, 12.70, 12.70],
+                    backgroundColor: '#32BF78',
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Net Cash Flow ($M)',
+                            font: { family: 'Verdana', size: 14 },
+                            color: '#333333'
+                        },
+                        ticks: {
+                            font: { family: 'Verdana', size: 13 },
+                            color: '#666666',
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        },
+                        grid: { color: '#E0E0E0' }
+                    },
+                    x: {
+                        ticks: {
+                            font: { family: 'Verdana', size: 14 },
+                            color: '#333333'
+                        },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: '5-Year Net Cash Flow Projection',
+                        font: { family: 'Consolas', size: 20, weight: 'bold' },
+                        color: '#001177',
+                        padding: { bottom: 20 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Net Cash Flow: $' + context.parsed.y.toFixed(2) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

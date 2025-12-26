@@ -1,0 +1,172 @@
+{
+  "project_info": {
+    "title": "Verizon AI Transformation",
+    "created": 1766706080.281625,
+    "last_updated": 1766707396.7175646,
+    "total_slides": 20
+  },
+  "slides": {
+    "title": "edited",
+    "executive_summary": "edited",
+    "business_case": "edited",
+    "portfolio_overview": "edited",
+    "horizon1_use_cases": "edited",
+    "horizon2_use_cases": "edited",
+    "horizon3_enablers": "edited",
+    "financial_overview": "edited",
+    "roi_analysis": "edited",
+    "kpi_improvements": "edited",
+    "investment_breakdown": "edited",
+    "risk_assessment": "edited",
+    "implementation_roadmap": "edited",
+    "scenario_analysis": "edited",
+    "organizational_readiness": "edited",
+    "competitive_advantage": "edited",
+    "financial_summary": "edited",
+    "next_steps": "edited",
+    "appendix": "edited",
+    "contact": "edited"
+  },
+  "outline": [
+    {
+      "id": "title",
+      "title": "Verizon AI Transformation",
+      "summary": "Title slide with BlueAlly branding, project title, subtitle, and presentation date",
+      "image_plan": "/home/ubuntu/upload/pasted_file_MuQ25d_image.png - Image 1 is a professional, abstract cover template that fits the title slide's need for a clean, branded visual.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "executive_summary",
+      "title": "Executive Summary",
+      "summary": "High-level overview of AI transformation opportunity: $15.7M annual value, 448% ROI, 2-month payback, 14 use cases across 3 horizons",
+      "image_plan": "/home/ubuntu/upload/pasted_file_gaBnMi_image.png - Image 2 is a dashboard view with financial metrics (Total Annual Value, NPV, ROI, Payback Period) that directly align with the key metrics on the Executive Summary slide.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "business_case",
+      "title": "The Business Case for AI Transformation",
+      "summary": "Current challenges, AI transformation opportunity, strategic imperatives driving the initiative",
+      "image_plan": "/home/ubuntu/verizon-ai-dashboard/presentation_images/slide16_competitive_advantage.jpg - Image 19 is a Financial Waterfall Chart, which is explicitly requested for a chart on this slide to show investment, costs, and net cash flow.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "portfolio_overview",
+      "title": "AI Use Case Portfolio - 14 Initiatives Across 3 Horizons",
+      "summary": "Breakdown of 14 use cases by horizon (H1: 5 quick wins, H2: 5 workforce augmentation, H3: 4 advanced capabilities), with timeline and value distribution",
+      "image_plan": "/home/ubuntu/upload/search_images/22wkujbWIQud.png - Image 12 is a product roadmap/timeline graphic that visually represents the concept of value distribution across different implementation horizons (H1, H2, H3).",
+      "slide_template_key": ""
+    },
+    {
+      "id": "horizon1_use_cases",
+      "title": "Horizon 1 - Immediate Wins (Months 1-6)",
+      "summary": "5 quick-win use cases with high ROI and low implementation effort: Autonomous Network Testing, Real-Time Anomaly Detection, Post-Maintenance Documentation, Maintenance Window Planning, GPU Infrastructure Foundation",
+      "image_plan": "/home/ubuntu/upload/search_images/OFcptBJ1y51Y.jpg - Image 11 is a pie chart illustrating investment alternatives, which can be repurposed to visually represent the value driver distribution (Cost Reduction, Risk Mitigation, Revenue Impact) as a pie chart.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "horizon2_use_cases",
+      "title": "Horizon 2 - Workforce Augmentation (Months 7-12)",
+      "summary": "5 workforce augmentation use cases: Intelligent Incident Triage, Predictive Maintenance Scheduling, Network Configuration Optimization, Customer Impact Prediction, Knowledge Base Auto-Generation",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "horizon3_enablers",
+      "title": "Horizon 3 & Enablers - Advanced Capabilities (Months 13-24)",
+      "summary": "4 advanced use cases and enablers: Automated Root Cause Analysis, Self-Healing Network Systems, AI-Powered Capacity Planning, Intelligent Workforce Scheduling",
+      "image_plan": "/home/ubuntu/verizon-ai-dashboard/presentation_images/slide17_financial_summary.jpg - Image 20 shows a three-phase strategy and planning diagram, which can represent the H1 quick wins and the start of the transformation timeline.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "financial_overview",
+      "title": "Financial Overview - $61.4M Net Cash Flow Over 5 Years",
+      "summary": "Key financial metrics: $2.11M investment, $15.7M annual value, $35M NPV, 448% ROI, 2-month payback period with detailed breakdown",
+      "image_plan": "/home/ubuntu/upload/search_images/6adpAP3MmDyO.webp - Image 13 is a business plan timeline roadmap graphic, suitable for illustrating the 18-month timeline and overlapping phases of the Horizon 2 initiatives.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "roi_analysis",
+      "title": "ROI Analysis - 448% Return on $2.11M Investment",
+      "summary": "Detailed ROI calculation showing 5-year benefits ($78.5M) vs. costs ($17.1M), annual ROI progression, and comparison to industry benchmarks",
+      "image_plan": "/home/ubuntu/upload/search_images/NTIyvF1PxkbZ.png - Image 14 is a detailed product roadmap graphic, which can be used to represent the long-term strategic transformation (H3) and foundational enablers.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "kpi_improvements",
+      "title": "14 Measurable KPI Improvements Across Operations",
+      "summary": "Comprehensive table showing all 14 KPIs with baseline, target, improvement percentage, and timeline for each use case",
+      "image_plan": "/home/ubuntu/upload/search_images/0BDmntH5p18z.jpg - Image 3 is a KPI breakdown dashboard that visually supports the slide's content on measurable KPI improvements across the 14 initiatives.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "investment_breakdown",
+      "title": "Investment Breakdown & Cost Structure",
+      "summary": "Infrastructure investment details ($2.11M: HPE $1.03M + NVIDIA $1.08M), annual operating costs ($3M), cost structure analysis",
+      "image_plan": "/home/ubuntu/upload/search_images/kwQcXST9kCwU.jpg - Image 10 is an IT Financial Investment Analysis Template, which visually supports the theme of investment breakdown and cost structure.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "risk_assessment",
+      "title": "Risk Assessment & Mitigation Strategies",
+      "summary": "Risk profile by horizon, success probabilities, implementation effort analysis, and mitigation strategies for each risk category",
+      "image_plan": "/home/ubuntu/verizon-ai-dashboard/presentation_images/slide12_risk_assessment.jpg - Image 17 is a Corporate Project Portfolio Risk Matrix, which is highly relevant for visualizing the risk assessment and mitigation strategies across the portfolio.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "implementation_roadmap",
+      "title": "Implementation Roadmap - 24-Month Timeline",
+      "summary": "Phased rollout plan with Gantt chart showing use case implementation sequence, dependencies, resource allocation, and value milestones",
+      "image_plan": "/home/ubuntu/upload/search_images/W7Y0dsZzA3yI.jpg - Image 15 is a business plan timeline roadmap graphic, which can be used to illustrate the 24-month implementation roadmap and milestones.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "scenario_analysis",
+      "title": "Scenario Analysis - Conservative vs. Aggressive",
+      "summary": "Three scenarios (Conservative, Base Case, Aggressive) comparing Annual Value, NPV, ROI, and Payback Period under different assumptions",
+      "image_plan": "/home/ubuntu/verizon-ai-dashboard/presentation_images/slide14_scenario_analysis.jpg - Image 18 is a bar chart comparing Conservative, Base Case, and Aggressive financial projection scenarios, perfectly matching the slide's content.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "organizational_readiness",
+      "title": "Organizational Readiness & Change Management",
+      "summary": "Readiness assessment across 5 dimensions (Leadership, Technology, Process, People, Culture), gap analysis, and change management action plan",
+      "image_plan": "/home/ubuntu/upload/search_images/XHYr6KuNSe0T.png - Image 16 shows change management strategies focused on people, which aligns with the organizational readiness and change management theme.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "competitive_advantage",
+      "title": "Competitive Advantage & Strategic Positioning",
+      "summary": "Strategic benefits of AI transformation, competitive positioning vs. industry peers, differentiation factors, and market leadership opportunity",
+      "image_plan": "/home/ubuntu/upload/search_images/jDJw0mSPQeoz.png - Image 9 is a competitive positioning matrix, which is ideal for illustrating how the AI transformation establishes Verizon's strategic positioning and competitive advantage.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "financial_summary",
+      "title": "Financial Summary & Investment Recommendation",
+      "summary": "Consolidated financial highlights, investment recommendation with risk-adjusted returns, and executive decision framework",
+      "image_plan": "/home/ubuntu/upload/search_images/05Qf2jQoZE6u.png - Image 7 is a corporate strategy diagram that can be used to represent the financial summary and investment recommendation, emphasizing the strategic importance of the decision.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "next_steps",
+      "title": "Next Steps & Implementation Plan",
+      "summary": "Immediate action plan for next 30/60/90 days, governance structure, success metrics, and approval requirements",
+      "image_plan": "/home/ubuntu/upload/search_images/GyMKLvc6dzf3.png - Image 8 is a corporate strategy diagram, which can be used to illustrate the next steps and implementation plan, showing the structured approach to launching the transformation.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix - Detailed Use Case Analysis",
+      "summary": "Comprehensive table with all 14 use cases showing annual value, implementation cost, operating cost, success probability, effort level, and timeline",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "contact",
+      "title": "Contact & Next Steps",
+      "summary": "BlueAlly contact information, next steps for engagement, and call to action",
+      "image_plan": "/home/ubuntu/upload/search_images/nSOkmiLPjtzh.jpg - Image 4 is a professional image of an executive board meeting, suitable for a contact and closing slide directed at C-level executives.",
+      "slide_template_key": ""
+    }
+  ]
+}

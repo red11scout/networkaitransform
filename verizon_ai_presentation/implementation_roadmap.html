@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 40px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 40px; }
+      .timeline-container { margin-bottom: 35px; }
+      .timeline-header { display: flex; margin-bottom: 10px; }
+      .timeline-month { flex: 1; font-family: Verdana, sans-serif; font-size: 11px; color: #666666; text-align: center; }
+      .timeline-bar-container { margin-bottom: 15px; }
+      .timeline-label { font-family: Verdana, sans-serif; font-size: 14px; font-weight: bold; color: #001177; margin-bottom: 8px; }
+      .timeline-bar { height: 40px; display: flex; }
+      .timeline-segment { display: flex; align-items: center; justify-content: center; font-family: Verdana, sans-serif; font-size: 13px; font-weight: bold; color: #FFFFFF; }
+      .h1-bar { background: #04A1FE; }
+      .h2-bar { background: #32BF78; }
+      .h3-bar { background: #001075; }
+      .milestones-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .milestones-table thead th { font-family: Consolas, monospace; font-size: 14px; font-weight: bold; color: #FFFFFF; background: #001177; padding: 10px 12px; text-align: left; }
+      .milestones-table tbody td { font-family: Verdana, sans-serif; color: #333333; padding: 10px 12px; border-bottom: 1px solid #E0E0E0; }
+      .milestones-table tbody tr:hover { background: #F8F9FA; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 11 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">24-Month Implementation Roadmap</div>
+            
+            <div class="timeline-container">
+                <div class="timeline-header">
+                    <div class="timeline-month">M1-6</div>
+                    <div class="timeline-month">M7-12</div>
+                    <div class="timeline-month">M13-18</div>
+                    <div class="timeline-month">M19-24</div>
+                </div>
+                
+                <div class="timeline-bar-container">
+                    <div class="timeline-label">Horizon 1: Immediate Wins (5 use cases, $6.2M annual value)</div>
+                    <div class="timeline-bar">
+                        <div class="timeline-segment h1-bar" style="width: 25%;">Deploy & Optimize</div>
+                        <div style="width: 75%; background: #F0F0F0;"></div>
+                    </div>
+                </div>
+                
+                <div class="timeline-bar-container">
+                    <div class="timeline-label">Horizon 2: Workforce Augmentation (5 use cases, $5.8M annual value)</div>
+                    <div class="timeline-bar">
+                        <div style="width: 25%; background: #F0F0F0;"></div>
+                        <div class="timeline-segment h2-bar" style="width: 25%;">Deploy & Optimize</div>
+                        <div style="width: 50%; background: #F0F0F0;"></div>
+                    </div>
+                </div>
+                
+                <div class="timeline-bar-container">
+                    <div class="timeline-label">Horizon 3 & Enablers (4 use cases, $3.7M annual value)</div>
+                    <div class="timeline-bar">
+                        <div style="width: 50%; background: #F0F0F0;"></div>
+                        <div class="timeline-segment h3-bar" style="width: 50%;">Deploy & Optimize</div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="milestones-table">
+                <thead>
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Timeline</th>
+                        <th>Key Deliverables</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Infrastructure Deployment</td>
+                        <td>Months 1-2</td>
+                        <td>HPE servers, NVIDIA GPUs, AI platform foundation</td>
+                    </tr>
+                    <tr>
+                        <td>H1 Quick Wins Launch</td>
+                        <td>Months 1-6</td>
+                        <td>5 use cases deployed, $6.2M annual value realized</td>
+                    </tr>
+                    <tr>
+                        <td>H2 Workforce Augmentation</td>
+                        <td>Months 7-12</td>
+                        <td>5 use cases deployed, $5.8M annual value realized</td>
+                    </tr>
+                    <tr>
+                        <td>H3 Advanced Capabilities</td>
+                        <td>Months 13-24</td>
+                        <td>4 use cases deployed, $3.7M annual value realized</td>
+                    </tr>
+                    <tr>
+                        <td>Full Portfolio Optimization</td>
+                        <td>Month 24</td>
+                        <td>14 use cases operational, $15.7M annual value achieved</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

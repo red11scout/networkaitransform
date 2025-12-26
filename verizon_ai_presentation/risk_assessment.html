@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 40px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 28px; }
+      .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+      .risk-category { background: #F8F9FA; padding: 12px 16px; }
+      .risk-title { font-family: Consolas, monospace; font-size: 18px; font-weight: bold; color: #001177; margin-bottom: 10px; }
+      .risk-level { font-family: Verdana, sans-serif; font-size: 14px; margin-bottom: 8px; }
+      .risk-level-label { display: inline-block; width: 80px; font-weight: bold; }
+      .low { color: #32BF78; }
+      .medium { color: #F59E0B; }
+      .high { color: #DC2626; }
+      .mitigation-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .mitigation-table thead th { font-family: Consolas, monospace; font-size: 14px; font-weight: bold; color: #FFFFFF; background: #001177; padding: 8px 10px; text-align: left; }
+      .mitigation-table tbody td { font-family: Verdana, sans-serif; color: #333333; padding: 8px 10px; border-bottom: 1px solid #E0E0E0; }
+      .mitigation-table tbody tr:hover { background: #F8F9FA; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 12 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">Risk Assessment &amp; Mitigation Strategies</div>
+            
+            <div class="risk-grid">
+                <div class="risk-category">
+                    <div class="risk-title">Technical Risks</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Infrastructure reliability (99.5% uptime SLA)</div>
+                    <div class="risk-level"><span class="risk-level-label medium">MEDIUM:</span> AI model accuracy (85-95% across use cases)</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Integration complexity (existing data sources)</div>
+                </div>
+                
+                <div class="risk-category">
+                    <div class="risk-title">Organizational Risks</div>
+                    <div class="risk-level"><span class="risk-level-label medium">MEDIUM:</span> Change management &amp; adoption resistance</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Skills gap (training programs included)</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Resource capacity (phased rollout)</div>
+                </div>
+                
+                <div class="risk-category">
+                    <div class="risk-title">Financial Risks</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Budget overruns (fixed infrastructure cost)</div>
+                    <div class="risk-level"><span class="risk-level-label medium">MEDIUM:</span> ROI realization delays (phased value capture)</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Operating cost variance (predictable AI platform costs)</div>
+                </div>
+                
+                <div class="risk-category">
+                    <div class="risk-title">Strategic Risks</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Competitive disadvantage (industry-leading capabilities)</div>
+                    <div class="risk-level"><span class="risk-level-label medium">MEDIUM:</span> Technology obsolescence (modular architecture)</div>
+                    <div class="risk-level"><span class="risk-level-label low">LOW:</span> Regulatory compliance (built-in governance)</div>
+                </div>
+            </div>
+            
+            <table class="mitigation-table">
+                <thead>
+                    <tr>
+                        <th>Risk Category</th>
+                        <th>Mitigation Strategy</th>
+                        <th>Success Metric</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Model Accuracy</td>
+                        <td>Continuous model training, human-in-the-loop validation, A/B testing</td>
+                        <td>85-95% accuracy maintained</td>
+                    </tr>
+                    <tr>
+                        <td>Change Management</td>
+                        <td>Comprehensive training programs, executive sponsorship, pilot programs</td>
+                        <td>&gt;80% user adoption rate</td>
+                    </tr>
+                    <tr>
+                        <td>ROI Realization</td>
+                        <td>Phased rollout with H1 quick wins, monthly value tracking, course correction</td>
+                        <td>$6.2M value in first 6 months</td>
+                    </tr>
+                    <tr>
+                        <td>Technology Obsolescence</td>
+                        <td>Modular architecture, vendor-agnostic design, quarterly technology reviews</td>
+                        <td>Platform refresh cycle &lt;3 years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

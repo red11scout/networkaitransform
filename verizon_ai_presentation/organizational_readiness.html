@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 40px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 35px; }
+      .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+      .pillar-card { background: #F8F9FA; padding: 18px 20px; text-align: center; }
+      .pillar-icon { font-size: 36px; color: #04A1FE; margin-bottom: 12px; }
+      .pillar-title { font-family: Consolas, monospace; font-size: 16px; font-weight: bold; color: #001177; margin-bottom: 8px; }
+      .pillar-desc { font-family: Verdana, sans-serif; font-size: 13px; color: #666666; line-height: 1.5; }
+      .training-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .training-table thead th { font-family: Consolas, monospace; font-size: 14px; font-weight: bold; color: #FFFFFF; background: #001177; padding: 10px 12px; text-align: left; }
+      .training-table tbody td { font-family: Verdana, sans-serif; color: #333333; padding: 10px 12px; border-bottom: 1px solid #E0E0E0; }
+      .training-table tbody tr:hover { background: #F8F9FA; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 15 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">Organizational Readiness & Change Management</div>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-users"></i></div>
+                    <div class="pillar-title">Executive Sponsorship</div>
+                    <div class="pillar-desc">C-suite commitment and steering committee oversight</div>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="pillar-title">Training & Upskilling</div>
+                    <div class="pillar-desc">Comprehensive programs for workforce AI adoption</div>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-comments"></i></div>
+                    <div class="pillar-title">Communication Plan</div>
+                    <div class="pillar-desc">Transparent messaging and stakeholder engagement</div>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="pillar-title">Value Tracking</div>
+                    <div class="pillar-desc">Monthly KPI monitoring and success metrics</div>
+                </div>
+            </div>
+            
+            <table class="training-table">
+                <thead>
+                    <tr>
+                        <th>Training Program</th>
+                        <th>Target Audience</th>
+                        <th>Duration</th>
+                        <th>Key Topics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Fundamentals</td>
+                        <td>All employees</td>
+                        <td>4 hours</td>
+                        <td>AI basics, use cases, ethical considerations</td>
+                    </tr>
+                    <tr>
+                        <td>Platform Operations</td>
+                        <td>Network engineers</td>
+                        <td>2 days</td>
+                        <td>AI platform usage, troubleshooting, best practices</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced AI Techniques</td>
+                        <td>Data scientists</td>
+                        <td>1 week</td>
+                        <td>Model training, optimization, performance tuning</td>
+                    </tr>
+                    <tr>
+                        <td>Change Leadership</td>
+                        <td>Managers</td>
+                        <td>1 day</td>
+                        <td>Leading transformation, addressing resistance, coaching</td>
+                    </tr>
+                    <tr>
+                        <td>Use Case Workshops</td>
+                        <td>Business units</td>
+                        <td>4 hours</td>
+                        <td>Hands-on training for specific use cases (H1, H2, H3)</td>
+                    </tr>
+                    <tr>
+                        <td>Governance & Compliance</td>
+                        <td>Legal, compliance</td>
+                        <td>1 day</td>
+                        <td>AI ethics, data privacy, regulatory requirements</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      .slide-container { width: 1280px; min-height: 720px; background: #FFFFFF; font-family: Verdana, sans-serif; }
+      .header-bar { width: 100%; height: 60px; background: #001177; display: flex; align-items: center; justify-content: space-between; padding-left: 60px; padding-right: 60px; }
+      .logo { font-family: Consolas, monospace; font-size: 24px; font-weight: bold; color: #FFFFFF; }
+      .logo-accent { color: #04A1FE; }
+      .slide-number { font-family: Verdana, sans-serif; font-size: 14px; color: #CEE5F1; }
+      .content { padding-left: 60px; padding-right: 60px; padding-top: 24px; }
+      .slide-title { font-family: Consolas, monospace; font-size: 32px; font-weight: bold; color: #001177; margin-bottom: 35px; }
+      .appendix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .appendix-section { background: #F8F9FA; padding: 12px 16px; }
+      .section-title { font-family: Consolas, monospace; font-size: 18px; font-weight: bold; color: #001177; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid #04A1FE; }
+      .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 8px; }
+      .spec-table tr { border-bottom: 1px solid #E0E0E0; }
+      .spec-table td { font-family: Verdana, sans-serif; padding: 8px 10px; }
+      .spec-table td:first-child { font-weight: bold; color: #001177; width: 45%; }
+      .spec-table td:last-child { color: #333333; }
+      .assumption-list { list-style: none; padding-left: 0; }
+      .assumption-list li { font-family: Verdana, sans-serif; font-size: 13px; color: #333333; margin-bottom: 6px; padding-left: 20px; position: relative; line-height: 1.5; }
+      .assumption-list li:before { content: "•"; position: absolute; left: 0; color: #04A1FE; font-weight: bold; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-bar">
+            <div class="logo">BLUE<span class="logo-accent">ALLY</span></div>
+            <div class="slide-number">Slide 19 of 20</div>
+        </div>
+        
+        <div class="content">
+            <div class="slide-title">Appendix - Technical Specifications & Assumptions</div>
+            
+            <div class="appendix-grid">
+                <div class="appendix-section">
+                    <div class="section-title">Infrastructure Specifications</div>
+                    <table class="spec-table">
+                        <tr>
+                            <td>HPE Servers</td>
+                            <td>$1,030,000 (high-performance compute)</td>
+                        </tr>
+                        <tr>
+                            <td>NVIDIA GPUs</td>
+                            <td>$1,080,000 (AI acceleration)</td>
+                        </tr>
+                        <tr>
+                            <td>Total Infrastructure</td>
+                            <td>$2,110,000</td>
+                        </tr>
+                        <tr>
+                            <td>Annual Operating Cost</td>
+                            <td>$3,000,000</td>
+                        </tr>
+                        <tr>
+                            <td>5-Year Total Cost</td>
+                            <td>$17,110,000</td>
+                        </tr>
+                        <tr>
+                            <td>Uptime SLA</td>
+                            <td>99.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Deployment Timeline</td>
+                            <td>2 months</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="section-title">Use Case Portfolio</div>
+                    <table class="spec-table">
+                        <tr>
+                            <td>Total Use Cases</td>
+                            <td>14 AI initiatives</td>
+                        </tr>
+                        <tr>
+                            <td>Horizon 1 (H1)</td>
+                            <td>5 use cases, $6.2M annual value</td>
+                        </tr>
+                        <tr>
+                            <td>Horizon 2 (H2)</td>
+                            <td>5 use cases, $5.8M annual value</td>
+                        </tr>
+                        <tr>
+                            <td>Horizon 3 + Enablers</td>
+                            <td>4 use cases, $3.7M annual value</td>
+                        </tr>
+                        <tr>
+                            <td>Total Annual Value</td>
+                            <td>$15,700,000</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="appendix-section">
+                    <div class="section-title">Financial Assumptions</div>
+                    <ul class="assumption-list">
+                        <li>Discount rate: 10% for NPV calculations</li>
+                        <li>Planning horizon: 5 years (2025-2029)</li>
+                        <li>Adoption rate: 85% (base case scenario)</li>
+                        <li>Implementation speed: 100% (on-time delivery)</li>
+                        <li>Success probability: 85-95% across use cases</li>
+                        <li>Labor cost savings: $8.2M annually</li>
+                        <li>Operational efficiency gains: $7.5M annually</li>
+                        <li>Infrastructure depreciation: 5-year straight-line</li>
+                    </ul>
+                    
+                    <div class="section-title">Methodology Notes</div>
+                    <ul class="assumption-list">
+                        <li>ROI calculated as (5-Year Benefits - 5-Year Costs) / 5-Year Costs</li>
+                        <li>Payback period based on monthly net cash flow analysis</li>
+                        <li>NPV discounted at 10% corporate hurdle rate</li>
+                        <li>KPI improvements validated through pilot programs</li>
+                        <li>Cost estimates based on vendor quotes and market benchmarks</li>
+                        <li>Value estimates conservative, exclude intangible benefits</li>
+                        <li>Risk assessment based on industry best practices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
